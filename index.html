@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Profissional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abel:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Abel', sans-serif;
+            background: url('https://i.postimg.cc/L5xkCPGM/Rectangle-1.png') center/cover no-repeat fixed;
+            background-color: rgba(13, 0, 0, 0.6);
+            min-height: 100vh;
+        }
+
+        /* Barra de Navegação */
+        .navbar {
+            background: rgba(44, 53, 50, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Container Principal */
+        .main-container {
+            margin-top: 80px;
+            padding: 20px;
+        }
+
+        /* Logo Central */
+        .logo-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .logo {
+            max-width: 300px;
+            height: auto;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 1;
+        }
+
+        /* Galeria Cortina */
+        .gallery-curtain {
+            width: 100%;
+            max-width: 2000px;
+            height: 1500px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .curtain-overlay {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 1.5s ease;
+        }
+
+        .gallery-curtain:hover .curtain-overlay {
+            left: 100%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            height: 100%;
+        }
+
+        .gallery-item {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Texto Carrossel */
+        .carousel-text {
+            padding: 40px 0;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .carousel-content {
+            display: flex;
+            animation: scroll 15s linear infinite;
+            white-space: nowrap;
+        }
+
+        .carousel-item {
+            color: #C0C0C0;
+            font-size: 48px;
+            font-weight: 400;
+            margin-right: 100px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Galeria Central */
+        .center-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .center-gallery-item {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .center-gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Três Retângulos Animados */
+        .three-rectangles {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 60px 0;
+            flex-wrap: wrap;
+        }
+
+        .rectangle {
+            width: 400px;
+            height: 600px;
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            animation: slideAnimation 8s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+        }
+
+        .rectangle:nth-child(2) {
+            animation-delay: 2.5s;
+        }
+
+        .rectangle:nth-child(3) {
+            animation-delay: 5s;
+        }
+
+        @keyframes slideAnimation {
+            0%, 20% { transform: translateX(-100px); opacity: 0.7; }
+            40%, 60% { transform: translateX(0); opacity: 1; }
+            80%, 100% { transform: translateX(100px); opacity: 0.7; }
+        }
+
+        /* Área de Texto */
+        .text-area {
+            width: 700px;
+            height: 400px;
+            margin: 60px auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Carrinho de Compras */
+        .shopping-cart {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(44, 53, 50, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .shopping-cart:hover {
+            transform: translateY(-50%) scale(1.1);
+            background: rgba(44, 53, 50, 1);
+        }
+
+        /* Balão de Chat */
+        .chat-balloon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(44, 53, 50, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .chat-balloon:hover {
+            transform: scale(1.1);
+            background: rgba(44, 53, 50, 0.9);
+        }
+
+        /* Rodapé */
+        .footer {
+            background: rgba(44, 53, 50, 0.6);
+            backdrop-filter: blur(10px);
+            height: 100px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            animation: fillBar 3s ease-in-out infinite;
+        }
+
+        @keyframes fillBar {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: calc(100% - 8px);
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .gallery-curtain {
+                height: 800px;
+            }
+
+            .three-rectangles {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .text-area {
+                width: 90%;
+                height: 300px;
+            }
+
+            .carousel-item {
+                font-size: 32px;
+            }
+
+            .center-gallery {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .rectangle {
+                width: 300px;
+                height: 400px;
+            }
+
+            .shopping-cart {
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .chat-balloon {
+                right: 15px;
+                bottom: 100px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Navegação -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#contatos"><i class="fas fa-phone"></i> Contatos</a></li>
+            <li><a href="#sobre"><i class="fas fa-info-circle"></i> Sobre</a></li>
+            <li><a href="#termos"><i class="fas fa-file-contract"></i> Termos</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <!-- Logo Central -->
+        <section class="logo-section">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDMwMCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMTUwIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXJfMF8xKSIgcng9IjIwIi8+CjxwYXRoIGQ9Ik0xNTAgNzVMMTAwIDUwTDIwMCA1MEwxNTAgNzVaIiBmaWxsPSJ3aGl0ZSIvPgo8dGV4dCB4PSIxNTAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U1VBIExPR08gQVFVSTwvdGV4dD4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl8wXzEiIHgxPSIwIiB5MT0iMCIgeDI9IjMwMCIgeTI9IjE1MCI+CjxzdG9wIHN0b3AtY29sb3I9IiM2NjdlZWEiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNzY0YmEyIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+" alt="Logotipo da empresa" class="logo">
+        </section>
+
+        <!-- Galeria Cortina -->
+        <section class="gallery-curtain">
+            <div class="curtain-overlay"></div>
+            <div class="gallery-grid">
+                <div class="gallery-item">GIF 1<br>300x200</div>
+                <div class="gallery-item">GIF 2<br>300x200</div>
+                <div class="gallery-item">GIF 3<br>300x200</div>
+                <div class="gallery-item">GIF 4<br>300x200</div>
+                <div class="gallery-item">GIF 5<br>300x200</div>
+                <div class="gallery-item">GIF 6<br>300x200</div>
+                <div class="gallery-item">GIF 7<br>300x200</div>
+                <div class="gallery-item">GIF 8<br>300x200</div>
+                <div class="gallery-item">GIF 9<br>300x200</div>
+                <div class="gallery-item">GIF 10<br>300x200</div>
+            </div>
+        </section>
+
+        <!-- Texto Carrossel -->
+        <section class="carousel-text">
+            <div class="carousel-content">
+                <div class="carousel-item">SUA LOGOTIPO ESTÁ AQUI</div>
+                <div class="carousel-item">SUA LOGOTIPO ESTÁ AQUI</div>
+                <div class="carousel-item">SUA LOGOTIPO ESTÁ AQUI</div>
+            </div>
+        </section>
+
+        <!-- Galeria Central -->
+        <section class="center-gallery">
+            <div class="center-gallery-item">GIF 1<br>300x300</div>
+            <div class="center-gallery-item">GIF 2<br>300x300</div>
+            <div class="center-gallery-item">GIF 3<br>300x300</div>
+            <div class="center-gallery-item">GIF 4<br>300x300</div>
+            <div class="center-gallery-item">GIF 5<br>300x300</div>
+            <div class="center-gallery-item">GIF 6<br>300x300</div>
+            <div class="center-gallery-item">GIF 7<br>300x300</div>
+            <div class="center-gallery-item">GIF 8<br>300x300</div>
+            <div class="center-gallery-item">GIF 9<br>300x300</div>
+            <div class="center-gallery-item">GIF 10<br>300x300</div>
+        </section>
+
+        <!-- Três Retângulos Animados -->
+        <section class="three-rectangles">
+            <div class="rectangle">GIF Vertical<br>400x600</div>
+            <div class="rectangle">GIF Vertical<br>400x600</div>
+            <div class="rectangle">GIF Vertical<br>400x600</div>
+        </section>
+
+        <!-- Área de Texto -->
+        <section class="text-area">
+            <div>
+                <h2>Área de Conteúdo</h2>
+                <p>Este é um espaço dedicado ao seu conteúdo principal. Aqui você pode adicionar informações importantes sobre sua empresa, produtos ou serviços. O design responsivo garante que o conteúdo seja visualizado perfeitamente em todos os dispositivos.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Carrinho de Compras -->
+    <div class="shopping-cart" onclick="window.open('#', '_blank')">
+        <i class="fas fa-shopping-cart"></i>
+    </div>
+
+    <!-- Balão de Chat -->
+    <div class="chat-balloon" onclick="window.open('#', '_blank')">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-bar"></div>
+        <div class="footer-content">
+            <p>&copy; 2025 - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Efeito de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animação de entrada dos elementos
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Observar elementos para animação
+        document.querySelectorAll('.gallery-item, .center-gallery-item, .rectangle').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
