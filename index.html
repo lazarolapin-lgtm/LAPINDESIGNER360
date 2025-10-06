@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lapin Designer - Marketing Automático</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .form-section {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            border: 1px solid #333;
+        }
+
+        .form-section h2 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ddd;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea,
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input[type="file"] {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn-stop {
+            background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+        }
+
+        .btn-stop:hover {
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            background: #2a2a2a;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .status h3 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .status p {
+            color: #ccc;
+            margin: 5px 0;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .ad-section {
+            grid-column: 1 / -1;
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 2px dashed #444;
+        }
+
+        .ad-section h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            margin: auto;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .chat-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+            z-index: 999;
+            transition: all 0.3s;
+        }
+
+        .chat-bubble:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-bubble::before {
+            content: "💬";
+            font-size: 30px;
+        }
+
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+
+        .file-info {
+            margin-top: 10px;
+            padding: 10px;
+            background: #2a2a2a;
+            border-radius: 5px;
+            color: #4CAF50;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://im.ge/i/Group-4.ny41jq" alt="Lapin Designer Logo" class="logo">
+        <h1>Lapin Designer</h1>
+        <p>Sistema Automático de Marketing</p>
+    </div>
+
+    <div class="container">
+        <!-- Seção de E-mail -->
+        <div class="form-section">
+            <h2>📧 Envio de E-mails</h2>
+            <form id="emailForm">
+                <div class="form-group">
+                    <label for="emailSubject">Assunto do E-mail:</label>
+                    <input type="text" id="emailSubject" placeholder="Digite o assunto" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailMessage">Mensagem do E-mail:</label>
+                    <textarea id="emailMessage" placeholder="Digite sua mensagem aqui..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="emailFile">Carregar arquivo TXT com e-mails:</label>
+                    <input type="file" id="emailFile" accept=".txt" required>
+                    <div id="emailFileInfo" class="file-info"></div>
+                </div>
+                <button type="button" class="btn" onclick="startEmailCampaign()">Iniciar Campanha de E-mail</button>
+                <button type="button" class="btn btn-stop" onclick="stopEmailCampaign()">Parar Campanha</button>
+            </form>
+            <div id="emailStatus" class="status" style="display:none;">
+                <h3>Status da Campanha</h3>
+                <p>Total de e-mails: <span id="emailTotal">0</span></p>
+                <p>E-mails enviados: <span id="emailSent">0</span></p>
+                <p>Próximo envio em: <span id="emailNextSend">--</span></p>
+            </div>
+        </div>
+
+        <!-- Seção de SMS -->
+        <div class="form-section">
+            <h2>📱 Envio de SMS</h2>
+            <form id="smsForm">
+                <div class="form-group">
+                    <label for="smsMessage">Mensagem SMS:</label>
+                    <textarea id="smsMessage" placeholder="Digite sua mensagem SMS aqui..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="smsFile">Carregar arquivo VCF com números:</label>
+                    <input type="file" id="smsFile" accept=".vcf,.vcard" required>
+                    <div id="smsFileInfo" class="file-info"></div>
+                </div>
+                <button type="button" class="btn" onclick="startSmsCampaign()">Iniciar Campanha de SMS</button>
+                <button type="button" class="btn btn-stop" onclick="stopSmsCampaign()">Parar Campanha</button>
+            </form>
+            <div id="smsStatus" class="status" style="display:none;">
+                <h3>Status da Campanha</h3>
+                <p>Total de números: <span id="smsTotal">0</span></p>
+                <p>SMS enviados: <span id="smsSent">0</span></p>
+                <p>Próximo envio em: <span id="smsNextSend">--</span></p>
+            </div>
+        </div>
+
+        <!-- Seção de Anúncios -->
+        <div class="ad-section">
+            <h3>🎯 Espaço Publicitário - R$ 20,00/mês</h3>
+            <p style="color: #888; margin-bottom: 15px;">Anuncie aqui e alcance mais clientes!</p>
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <img src="https://via.placeholder.com/800x200/4CAF50/ffffff?text=Anuncie+Aqui" alt="Anúncio 1">
+                </div>
+                <div class="slide">
+                    <img src="https://via.placeholder.com/800x200/2196F3/ffffff?text=Seu+Banner+Aqui" alt="Anúncio 2">
+                </div>
+                <div class="slide">
+                    <img src="https://via.placeholder.com/800x200/FF9800/ffffff?text=Contrate+Agora" alt="Anúncio 3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificação -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Chat Bubble -->
+    <div class="chat-bubble" onclick="openChat()"></div>
+
+    <script>
+        // Inicializar EmailJS
+        (function(){
+            emailjs.init("V4wGkI6pDTx3_sRN-"); // Sua chave pública do EmailJS
+        })();
+
+        // Variáveis globais
+        let emailList = [];
+        let emailInterval = null;
+        let emailCurrentIndex = 0;
+        let emailSubject = '';
+        let emailMessage = '';
+
+        let smsList = [];
+        let smsInterval = null;
+        let smsCurrentIndex = 0;
+        let smsMessage = '';
+
+        // Slideshow automático
+        let slideIndex = 0;
+        function showSlides() {
+            const slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].classList.add("active");
+            setTimeout(showSlides, 3000);
+        }
+        showSlides();
+
+        // Função de notificação
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.background = type === 'success' ? '#4CAF50' : '#f44336';
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 4000);
+        }
+
+        // Upload de arquivo de e-mails
+        document.getElementById('emailFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const content = event.target.result;
+                    emailList = content.split('\n')
+                        .map(email => email.trim())
+                        .filter(email => email && email.includes('@'));
+                    document.getElementById('emailFileInfo').style.display = 'block';
+                    document.getElementById('emailFileInfo').textContent = `✓ ${emailList.length} e-mails carregados`;
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Upload de arquivo VCF
+        document.getElementById('smsFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const content = event.target.result;
+                    smsList = parseVCF(content);
+                    document.getElementById('smsFileInfo').style.display = 'block';
+                    document.getElementById('smsFileInfo').textContent = `✓ ${smsList.length} números carregados`;
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Parser de VCF
+        function parseVCF(vcfContent) {
+            const phones = [];
+            const lines = vcfContent.split('\n');
+            for (let line of lines) {
+                if (line.startsWith('TEL')) {
+                    const phone = line.split(':')[1]?.trim();
+                    if (phone) phones.push(phone);
+                }
+            }
+            return phones;
+        }
+
+        // Iniciar campanha de e-mail
+        function startEmailCampaign() {
+            emailSubject = document.getElementById('emailSubject').value;
+            emailMessage = document.getElementById('emailMessage').value;
+            
+            if (!emailSubject || !emailMessage || emailList.length === 0) {
+                showNotification('Preencha todos os campos e carregue o arquivo TXT!', 'error');
+                return;
+            }
+
+            emailCurrentIndex = 0;
+            document.getElementById('emailStatus').style.display = 'block';
+            document.getElementById('emailTotal').textContent = emailList.length;
+            document.getElementById('emailSent').textContent = '0';
+            
+            sendEmail();
+            emailInterval = setInterval(sendEmail, 3600000); // 1 hora
+            showNotification('Campanha de e-mail iniciada!');
+        }
+
+        // Enviar e-mail
+        function sendEmail() {
+            if (emailCurrentIndex >= emailList.length) {
+                stopEmailCampaign();
+                showNotification('Campanha de e-mail concluída!');
+                return;
+            }
+
+            const email = emailList[emailCurrentIndex];
+            
+            // Enviar com EmailJS
+            const templateParams = {
+                to_email: email,
+                to_name: email.split('@')[0],
+                from_name: "Lapin Designer",
+                subject: emailSubject,
+                message: emailMessage
+            };
+
+            emailjs.send("service_bhc7lqg", "template_6nbbzmr", templateParams)
+                .then(function(response) {
+                    console.log('✓ E-mail enviado com sucesso:', email, response.status, response.text);
+                    emailCurrentIndex++;
+                    document.getElementById('emailSent').textContent = emailCurrentIndex;
+                    updateNextSend('email');
+                    showNotification(`✓ E-mail enviado para ${email}`);
+                }, function(error) {
+                    console.error('❌ Erro ao enviar e-mail:', error);
+                    // Continuar mesmo com erro
+                    emailCurrentIndex++;
+                    document.getElementById('emailSent').textContent = emailCurrentIndex;
+                    updateNextSend('email');
+                    showNotification(`⚠ Erro ao enviar para ${email}`, 'error');
+                });
+        }
+
+        // Parar campanha de e-mail
+        function stopEmailCampaign() {
+            if (emailInterval) {
+                clearInterval(emailInterval);
+                emailInterval = null;
+                showNotification('Campanha de e-mail parada');
+            }
+        }
+
+        // Iniciar campanha de SMS
+        function startSmsCampaign() {
+            smsMessage = document.getElementById('smsMessage').value;
+            
+            if (!smsMessage || smsList.length === 0) {
+                showNotification('Preencha a mensagem e carregue o arquivo VCF!', 'error');
+                return;
+            }
+
+            smsCurrentIndex = 0;
+            document.getElementById('smsStatus').style.display = 'block';
+            document.getElementById('smsTotal').textContent = smsList.length;
+            document.getElementById('smsSent').textContent = '0';
+            
+            sendSms();
+            smsInterval = setInterval(sendSms, 3600000); // 1 hora
+            showNotification('Campanha de SMS iniciada!');
+        }
+
+        // Enviar SMS
+        function sendSms() {
+            if (smsCurrentIndex >= smsList.length) {
+                stopSmsCampaign();
+                showNotification('Campanha de SMS concluída!');
+                return;
+            }
+
+            const phone = smsList[smsCurrentIndex];
+            const encodedMessage = encodeURIComponent(smsMessage);
+            const smsUrl = `https://www.torpedogratis.org/?phone=${phone}&message=${encodedMessage}`;
+            
+            // Abrir em nova aba (simulação de envio)
+            window.open(smsUrl, '_blank');
+            
+            smsCurrentIndex++;
+            document.getElementById('smsSent').textContent = smsCurrentIndex;
+            updateNextSend('sms');
+            showNotification(`SMS preparado para ${phone}`);
+        }
+
+        // Parar campanha de SMS
+        function stopSmsCampaign() {
+            if (smsInterval) {
+                clearInterval(smsInterval);
+                smsInterval = null;
+                showNotification('Campanha de SMS parada');
+            }
+        }
+
+        // Atualizar próximo envio
+        function updateNextSend(type) {
+            const nextTime = new Date(Date.now() + 3600000);
+            const timeString = nextTime.toLocaleTimeString('pt-BR');
+            document.getElementById(type + 'NextSend').textContent = timeString;
+        }
+
+        // Abrir chat
+        function openChat() {
+            window.open('https://mail.google.com/chat/u/0/#chat/space/AAQAw8LgJEw', '_blank');
+        }
+    </script>
+</body>
+</html>
