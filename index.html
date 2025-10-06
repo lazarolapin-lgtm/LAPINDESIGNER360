@@ -372,10 +372,78 @@ Se você busca presença forte e diferenciada, o Lapin Designer é a escolha cer
 
 
 </div>
+  <!-- Adicione a lib EmailJS -->
+<script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("service_bhc7lqg"); // substituir aqui
+  })();
+</script>
+
+<!-- Inputs já existentes: assunto, mensagem e input file -->
+<input id="subject" placeholder="Assunto do E-mail" />
+<textarea id="message" placeholder="Mensagem"></textarea>
+<input id="fileEmails" type="file" accept=".txt" />
+<button id="startBtn">Iniciar Campanha</button>
+<div id="status">Aguardando início...</div>
+
+<script>
+document.getElementById('startBtn').addEventListener('click', async () => {
+  const fileInput = document.getElementById('fileEmails');
+  const subject = document.getElementById('subject').value || "(sem assunto)";
+  const message = document.getElementById('message').value || "";
+
+  if (!fileInput.files.length) {
+    alert('Selecione o arquivo TXT com os e-mails (um por linha).');
+    return;
+  }
+  const file = fileInput.files[0];
+  const txt = await file.text();
+  const emails = txt.split(/\r?\n/).map(l => l.trim()).filter(l => l.length && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(l));
+  if (!emails.length) {
+    alert('Nenhum e-mail válido encontrado no arquivo.');
+    return;
+  }
+
+  const status = document.getElementById('status');
+  let sent = 0;
+  status.innerText = `Enviando ${emails.length} e-mails...`;
+
+  // função que envia um email via EmailJS
+  async function sendEmail(toEmail) {
+    const templateParams = {
+      to_email: toEmail,
+      subject: subject,
+      message_html: message,
+      // adicione outros campos do seu template se necessário
+    };
+    // substitua service_xxx e template_xxx pelos seus IDs
+    return emailjs.send('service_bhc7lqg', 'service_bhc7lqg', templateParams);
+  }
+
+  // envia com pequeno delay entre envios (ex: 800ms) — evita throttling
+  for (let i=0; i<emails.length; i++) {
+    try {
+      await sendEmail(emails[i]);
+      sent++;
+      status.innerText = `Enviados: ${sent} | Restantes: ${emails.length - sent}`;
+    } catch (err) {
+      console.error('Erro ao enviar para', emails[i], err);
+      // opcional: registrar erros em um array para exibir depois
+    }
+    // delay — ajuste conforme necessário
+    await new Promise(r => setTimeout(r, 800));
+  }
+
+  status.innerText = `Concluído. Enviados: ${sent} / ${emails.length}`;
+});
+</script>
+
 
 </body>
 
 </html>
+
 
 
 
