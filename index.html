@@ -61,6 +61,21 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   text-align: center;
   padding: 20px;
 }
+
+/* Estilo customizado para o contador */
+#sfc77bmf1gttqaxkxnyp6sej3hjf326g7d6 {
+  position: fixed;
+  left: 20px;
+  top: 200px;
+  z-index: 100;
+}
+
+#sfc77bmf1gttqaxkxnyp6sej3hjf326g7d6 iframe {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
 </style>
 </head>
 <body class="w3-black">
@@ -95,6 +110,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
   </div>
 </div>
+
+<!-- CONTADOR NO LADO ESQUERDO -->
+<div id="sfc77bmf1gttqaxkxnyp6sej3hjf326g7d6"></div>
+<script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=77bmf1gttqaxkxnyp6sej3hjf326g7d6&down=async" async></script>
 
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
@@ -178,10 +197,10 @@ Se você busca presença forte e diferenciada, o Lapin Designer é a escolha cer
           <li class="w3-dark-grey w3-xlarge w3-padding-32">Plataforma de anuncio</li>
           <li class="w3-padding-16">SEMANA  </li>
           <li class="w3-padding-16">MÊS</li>
-          <li class="w3-padding-16">ATÈ 200 E-MAILS</li>
+          <li class="w3-padding-16">ATÉ 200 E-MAILS</li>
           <li class="w3-padding-16">VENDER</li>
           <li class="w3-padding-16">COPIA</li>
-            <h2>R$50/h2>
+            <h2>R$50</h2>
             <span class="w3-opacity">PROJETOS</span>
           </li>
           <li class="w3-light-grey w3-padding-24">
@@ -222,7 +241,7 @@ Se você busca presença forte e diferenciada, o Lapin Designer é a escolha cer
 
       <!-- GIF 2 -->
       <div class="gif-container">
-        <img src="https://i.postimg.cc/MKHJcfYR/CACETA.png" class="https://i.postimg.cc/MKHJcfYR/CACETA.png">
+        <img src="https://i.postimg.cc/MKHJcfYR/CACETA.png" alt="CACETA">
         <div class="gif-overlay">
           <strong>CACETA</strong><br>
           <small>Descrição do seu trabalho</small>
@@ -233,7 +252,7 @@ Se você busca presença forte e diferenciada, o Lapin Designer é a escolha cer
       <div class="gif-container">
         <img src="https://i.postimg.cc/cLWSGGKY/SO-TEM-BOX.png" alt="GIF 3" class="gif-img">
         <div class="gif-overlay">
-          <strong>so tem box/strong><br>
+          <strong>so tem box</strong><br>
           <small>Descrição do seu trabalho</small>
         </div>
       </div>
@@ -268,49 +287,17 @@ Se você busca presença forte e diferenciada, o Lapin Designer é a escolha cer
         </div>
       </div>
   
-        <!-- GIF 7 -->
+      <!-- GIF 7 -->
       <div class="gif-container">
         <img src="https://i.postimg.cc/C1SW54My/ALICOIN1.png" alt="GIF 7" class="gif-img">
         <div class="gif-overlay">
           <strong>ALICOIN1</strong><br>
           <small>Descrição do seu trabalho</small>
-      </div>
-        </div> 
-      </div>
-      </div>
+        </div>
+      </div> 
     </div>
+  </div>
 
-      <!-- CSS para estilizar a galeria -->
-<style>
-  .gif-container {
-    position: relative;
-    margin-bottom: 16px;
-    overflow: hidden;
-    border-radius: 8px;
-  }
-
-  .gif-img {
-    width: 100%;
-    display: block;
-    border-radius: 8px;
-  }
-
-  .gif-overlay {
-    position: absolute;
-    bottom: 0;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    width: 100%;
-    padding: 8px;
-    text-align: center;
-    opacity: 0;
-    transition: 0.3s;
-  }
-
-  .gif-container:hover .gif-overlay {
-    opacity: 1;
-  }
-</style>
 <!-- Contact Section -->
 <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
   <h2 class="w3-text-light-grey">Contact Me</h2>
@@ -347,9 +334,9 @@ Se você busca presença forte e diferenciada, o Lapin Designer é a escolha cer
 <!-- Footer -->
 <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge" style="text-align:center">
 
-  <!-- Exemplo de GIFs com links -->
+  <!-- Redes Sociais -->
   <a href="https://wa.me/5511958759477?text=seja%20bem%20vindo%20" target="_blank">
-    <img src="https://i.postimg.cc/DwWt3gHv/icone-branco.png" alt="Whatsapp" style="width:40px;height:40px;" class="https://postimg.cc/t7R1L8Jf">
+    <img src="https://i.postimg.cc/DwWt3gHv/icone-branco.png" alt="Whatsapp" style="width:40px;height:40px;" class="w3-hover-opacity">
   </a>
 
   <a href="https://chat.google.com/room/AAQAw8LgJEw?cls=7" target="_blank">
@@ -365,73 +352,12 @@ Se você busca presença forte e diferenciada, o Lapin Designer é a escolha cer
   </a>
 
   <p class="w3-medium">Powered by 
-    <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">lapindesigner360/a>
+    <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">lapindesigner360</a>
   </p>
 </footer>
-
-
-</div>
-
 
 </div>
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
