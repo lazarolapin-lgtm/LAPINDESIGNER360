@@ -162,6 +162,40 @@
     /* ===== GALLERY HEADER IMAGE ===== */
     .gallery-logo-header { text-align: center; margin-bottom: 32px; }
     .gallery-logo-header img { max-width: 120px; height: auto; }
+
+    /* ===== FAIXA ANIMADA ===== */
+    .faixa-wrapper {
+      width: 100%;
+      height: 68px;
+      background: #1E93FA;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin: 28px 0 36px;
+    }
+    .faixa-track {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: scroll-left 80s linear infinite;
+      will-change: transform;
+    }
+    .faixa-track span {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 27px;
+      line-height: 64px;
+      color: #FFFFFF;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0 80px;
+      display: inline-block;
+    }
+    @keyframes scroll-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
   </style>
 </head>
 <body class="w3-black">
@@ -224,6 +258,21 @@
       O objetivo é valorizar a imagem do cliente, sempre com qualidade e criatividade.
       Cada projeto é pensado para transmitir confiança e profissionalismo. O Lapin Designer trabalha com foco em detalhes que fazem diferença. A missão é fortalecer marcas no ambiente físico e digital.
       Se você busca presença forte e diferenciada, o Lapin Designer é a escolha certa.</p>
+
+      <!-- ===== FAIXA ANIMADA ===== -->
+      <div class="faixa-wrapper">
+        <div class="faixa-track" id="track"></div>
+      </div>
+      <script>
+        const TEXTO = "CRIANDO LOGOTIPO";
+        const track = document.getElementById('track');
+        const repetitions = 20;
+        let html = '';
+        for (let i = 0; i < repetitions; i++) {
+          html += `<span>${TEXTO}</span>`;
+        }
+        track.innerHTML = html;
+      </script>
 
       <!-- Skill Bars -->
       <h3 class="w3-padding-16 w3-text-light-grey" style="margin-top:32px;">Minhas artes</h3>
