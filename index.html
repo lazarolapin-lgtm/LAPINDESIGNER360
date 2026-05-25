@@ -625,11 +625,12 @@ let visitorCount = 1;
 
 /* ---------- CONTADOR DE VISITANTES ---------- */
 function initVisitors() {
-  // Simula contagem com timestamp — cada "sessão" conta como +1
   const key = 'lapin_visits';
+  const keyMax = 'lapin_visits_max';
   const sessionKey = 'lapin_session';
 
   let count = parseInt(localStorage.getItem(key) || '0');
+  let savedMax = parseInt(localStorage.getItem(keyMax) || '0');
   const hasSession = sessionStorage.getItem(sessionKey);
 
   if (!hasSession) {
@@ -638,15 +639,17 @@ function initVisitors() {
     sessionStorage.setItem(sessionKey, '1');
   }
 
-  // Simula outros usuários (base mínima de 3 para parecer ativo)
-  visitorCount = Math.max(count, 3);
+  // Nunca começa abaixo do maior valor já atingido
+  visitorCount = Math.max(count, savedMax, 3);
+  localStorage.setItem(keyMax, visitorCount);
 
   updateVisitorUI();
 
-  // Flutuação aleatória a cada 30s para parecer dinâmico
+  // Crescimento gradual — só sobe ou mantém, nunca diminui
   setInterval(() => {
-    const delta = Math.floor(Math.random() * 3) - 1; // -1, 0 ou +1
-    visitorCount = Math.max(visitorCount + delta, 1);
+    const delta = Math.floor(Math.random() * 2); // 0 ou +1
+    visitorCount = visitorCount + delta;
+    localStorage.setItem(keyMax, visitorCount);
     updateVisitorUI();
   }, 30000);
 }
