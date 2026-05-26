@@ -661,42 +661,6 @@ function updateVisitorUI() {
   if (counter) counter.textContent = `👤 ${visitorCount} online`;
 }
 
-/* ---------- TOGGLE CHAT ---------- */
-function toggleChat() {
-  chatOpen = !chatOpen;
-  const win = document.getElementById('chat-window');
-  if (chatOpen) {
-    win.classList.add('open');
-    if (conversationHistory.length === 0) addWelcomeMessage();
-    setTimeout(() => document.getElementById('chat-input').focus(), 100);
-  } else {
-    win.classList.remove('open');
-  }
-}
-
-function openChat() {
-  if (!chatOpen) toggleChat();
-  setTimeout(() => {
-    document.getElementById('chat-window').scrollIntoView({ behavior: 'smooth', block: 'end' });
-  }, 100);
-}
-
-/* ---------- MENSAGEM DE BOAS-VINDAS ---------- */
-function addWelcomeMessage() {
-  addMsg('bot', '👋 Olá! Bem-vindo ao Lapin Designer! Como posso te ajudar hoje?');
-}
-
-/* ---------- ADICIONAR MENSAGEM NA TELA ---------- */
-function addMsg(type, text) {
-  const container = document.getElementById('chat-messages');
-  const div = document.createElement('div');
-  div.className = `msg ${type}`;
-  div.textContent = text;
-  container.appendChild(div);
-  container.scrollTop = container.scrollHeight;
-  return div;
-}
-
 /* ---------- INDICADOR "DIGITANDO..." ---------- */
 function showTyping() {
   return addMsg('typing', '✍️ Digitando...');
@@ -766,6 +730,23 @@ async function sendMessage() {
 /* ---------- INIT ---------- */
 initVisitors();
 </script>
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),
+s0=document.getElementsByTagName("script")[0];
+
+s1.async=true;
+s1.src='https://embed.tawk.to/6a15a0cbc6211f1c31ed5331/1jpi7o6vl';
+
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 
 </body>
 </html>
