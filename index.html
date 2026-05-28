@@ -479,7 +479,7 @@ nav a:hover{
       <img src="https://i.postimg.cc/q7smJbbT/mare-8.png" alt="Logo 1">
     </div>
     <div class="gif-container">
-      <img src="https://i.postimg.cc/MKLHL67g/ab8.png" alt="Logo 2">
+      <img src="https://i.postimg.cc/76PNxxJg/dromer8.png" alt="Logo 2">
     </div>
     <div class="gif-container">
       <img src="https://i.postimg.cc/Bvpx7d74/Rank-touro-8.png" alt="Logo 3">
@@ -503,7 +503,7 @@ nav a:hover{
       <img src="https://i.postimg.cc/rwK3FSb3/LARG28.png" alt="Logo 4">
     </div>
       <div class="gif-container">
-      <img src="https://i.postimg.cc/j5psYvgW/bird-8.png" alt="Logo 4">
+      <img src="https://i.postimg.cc/gJDNKJQQ/Agrupar8.png" alt="Logo 4">
     </div>
       <div class="gif-container">
       <img src="https://i.postimg.cc/WzNfRr0P/PIMENTA28.png" alt="Logo 4">
@@ -576,6 +576,86 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+
+
+<button id="chat-toggle" onclick="openChat()">
+  <i class="fa fa-comments"></i>
+</button>
+
+<div id="chat-window">
+  <div class="chat-header">
+    <div class="chat-title">Lapin Designer Chat</div>
+    <button id="chat-close" onclick="closeChat()">×</button>
+  </div>
+
+  <div id="chat-messages">
+    <div class="msg bot">Olá! Como posso ajudar?</div>
+  </div>
+
+  <div class="chat-input-area">
+    <input type="text" id="chat-input" placeholder="Digite sua mensagem...">
+    <button id="chat-send">➤</button>
+  </div>
+</div>
+
+
+<script>
+function openChat(){
+  const chat = document.getElementById('chat-window');
+  if(chat){
+    chat.classList.add('open');
+  }
+}
+
+function closeChat(){
+  const chat = document.getElementById('chat-window');
+  if(chat){
+    chat.classList.remove('open');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sendBtn = document.getElementById('chat-send');
+  const input = document.getElementById('chat-input');
+  const messages = document.getElementById('chat-messages');
+
+  function sendMessage(){
+    if(!input || !messages) return;
+
+    const text = input.value.trim();
+    if(!text) return;
+
+    const userMsg = document.createElement('div');
+    userMsg.className = 'msg user';
+    userMsg.textContent = text;
+    messages.appendChild(userMsg);
+
+    input.value = '';
+
+    setTimeout(() => {
+      const botMsg = document.createElement('div');
+      botMsg.className = 'msg bot';
+      botMsg.textContent = 'Recebemos sua mensagem!';
+      messages.appendChild(botMsg);
+      messages.scrollTop = messages.scrollHeight;
+    }, 600);
+
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  if(sendBtn){
+    sendBtn.addEventListener('click', sendMessage);
+  }
+
+  if(input){
+    input.addEventListener('keypress', (e) => {
+      if(e.key === 'Enter'){
+        sendMessage();
+      }
+    });
+  }
+});
+</script>
 
 </body>
 </html>
