@@ -347,21 +347,19 @@ nav a:hover{
 </div>
 <div class="mySlides fade">
   <div class="numbertext">3 / 4</div>
-  <img src="https://i.postimg.cc/QtR5bHVF/ven-1.jpg" style="width:100%">
-  <div class="text">ven-1.jpg</div>
+  <img src="https://i.postimg.cc/xCYKSGsK/VENENO.png" style="width:100%">
+  <div class="text">VENENO.png</div>
 </div>
   <div class="mySlides fade">
   <div class="numbertext">4 / 4</div>
   <img src="https://i.postimg.cc/44FnZbyF/ke-(3).png" style="width:100%">
   <div class="text">ke-(3).png</div>
 </div>
-</div>
 <br>
 <div style="text-align:center">
   <span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
 </div>
 </section>
 <section id="logos">
@@ -555,6 +553,150 @@ nav a:hover{
 
     <!-- Repita o bloco acima para os outros pacotes -->
 
+  </div>
+</section>
+
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111; }
+  #gallery {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    background: #111;
+    overflow: hidden;
+    height: 520px;
+  }
+  .gallery__strip__wrapper {
+    flex: 0 0 25%;
+    overflow: hidden;
+    position: relative;
+    border-right: 1px solid #222;
+    height: 100%;
+  }
+  .gallery__strip {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+  .gallery__strip.one   { animation: moveDown 18s ease-in-out alternate infinite; }
+  .gallery__strip.two   { animation: moveUp   20s ease-in-out alternate infinite; transform: translateY(-30%); }
+  .gallery__strip.three { animation: moveDown 22s ease-in-out alternate infinite; }
+  .gallery__strip.four  { animation: moveUp   16s ease-in-out alternate infinite; transform: translateY(-30%); }
+  .gallery__strip:hover { animation-play-state: paused; }
+
+  @keyframes moveDown {
+    0%,100% { transform: translateY(0%); }
+    50%      { transform: translateY(-42%); }
+  }
+  @keyframes moveUp {
+    0%,100% { transform: translateY(-30%); }
+    50%      { transform: translateY(5%); }
+  }
+
+  .photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0.5rem;
+    cursor: pointer;
+  }
+  .photo__image {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .photo__image img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    transition: transform 0.6s cubic-bezier(0.19,1,0.22,1);
+  }
+  .photo:hover .photo__image img { transform: scale(1.08); }
+  .photo__name {
+    margin-top: 6px;
+    font-family: serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 0.5px #666;
+    transition: color 0.3s ease, -webkit-text-stroke-color 0.3s ease;
+  }
+  .photo:hover .photo__name {
+    color: #fff;
+    -webkit-text-stroke-color: #fff;
+  }
+
+  .gallery__header {
+    background: #111;
+    text-align: center;
+    padding: 1.2rem 0 0.6rem;
+    font-family: serif;
+    letter-spacing: 6px;
+    font-size: 11px;
+    color: #444;
+    text-transform: uppercase;
+  }
+</style>
+
+<div style="background:#111; display:flex; flex-direction:column; align-items:center; padding:40px 20px 60px;">
+  <div class="gallery__header" style="width:100%; max-width:1300px;">Monograma · A–Z</div>
+  <div class="gallery" id="gallery" style="margin:0 auto;"></div>
+</div>
+
+<script>
+const links = [
+  { letter: "A", url: "https://i.postimg.cc/fyQG9L8d/A-4x.png" },
+  { letter: "B", url: "https://i.postimg.cc/httHxN12/B-4x.png" },
+  { letter: "C", url: "https://i.postimg.cc/XvZm1FhZ/C-4x.png" },
+  { letter: "D", url: "https://i.postimg.cc/6QDSkqJn/D-4x.png" },
+  { letter: "E", url: "https://i.postimg.cc/vTyKmKmr/E-4x.png" },
+  { letter: "F", url: "https://i.postimg.cc/15Jd9J1w/F-4x.png" },
+  { letter: "G", url: "https://i.postimg.cc/nLQSGxjL/G-4x.png" },
+  { letter: "G₂", url: "https://i.postimg.cc/hjWyCYTH/G4x.png" },
+  { letter: "H", url: "https://i.postimg.cc/vTGPy6PP/H-4x.png" },
+  { letter: "I", url: "https://i.postimg.cc/C5JcxLtX/I-4x.png" },
+  { letter: "J", url: "https://i.postimg.cc/kMy1cf4H/J-4x.png" },
+  { letter: "L", url: "https://i.postimg.cc/X7H2Mq9D/L-4x.png" },
+];
+
+function photoEl(item) {
+  const div = document.createElement("div");
+  div.className = "photo";
+  div.innerHTML = `
+    <div class="photo__image"><img src="${item.url}" alt="Monograma ${item.letter}" loading="lazy"></div>
+    <div class="photo__name">${item.letter}</div>
+  `;
+  return div;
+}
+
+const cols = [[], [], [], []];
+links.forEach((item, i) => cols[i % 4].push(item));
+
+const gallery = document.getElementById("gallery");
+const classes = ["one", "two", "three", "four"];
+
+cols.forEach((col, ci) => {
+  const wrapper = document.createElement("div");
+  wrapper.className = "gallery__strip__wrapper";
+  const strip = document.createElement("div");
+  strip.className = `gallery__strip ${classes[ci]}`;
+  const doubled = [...col, ...col, ...col];
+  doubled.forEach(item => strip.appendChild(photoEl(item)));
+  wrapper.appendChild(strip);
+  gallery.appendChild(wrapper);
+});
+</script>
   </div>
 </section>
 
