@@ -596,6 +596,96 @@ nav a:hover{
     padding: 2.5rem 0 2rem;
   }
 }
+
+/* ============ GALLERY MONOGRAMA ============ */
+#gallery {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  background: #111;
+  overflow: hidden;
+  height: 520px;
+  padding: 0;
+  gap: 0;
+}
+.gallery__strip__wrapper {
+  flex: 0 0 25%;
+  overflow: hidden;
+  position: relative;
+  border-right: 1px solid #222;
+  height: 100%;
+}
+.gallery__strip {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+.gallery__strip.one   { animation: moveDown 18s ease-in-out alternate infinite; }
+.gallery__strip.two   { animation: moveUp   20s ease-in-out alternate infinite; transform: translateY(-30%); }
+.gallery__strip.three { animation: moveDown 22s ease-in-out alternate infinite; }
+.gallery__strip.four  { animation: moveUp   16s ease-in-out alternate infinite; transform: translateY(-30%); }
+.gallery__strip:hover { animation-play-state: paused; }
+
+@keyframes moveDown {
+  0%,100% { transform: translateY(0%); }
+  50%      { transform: translateY(-42%); }
+}
+@keyframes moveUp {
+  0%,100% { transform: translateY(-30%); }
+  50%      { transform: translateY(5%); }
+}
+
+.photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0.5rem;
+  cursor: pointer;
+}
+.photo__image {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photo__image img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.19,1,0.22,1);
+}
+.photo:hover .photo__image img { transform: scale(1.08); }
+.photo__name {
+  margin-top: 6px;
+  font-family: serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 0.5px #666;
+  transition: color 0.3s ease, -webkit-text-stroke-color 0.3s ease;
+}
+.photo:hover .photo__name {
+  color: #fff;
+  -webkit-text-stroke-color: #fff;
+}
+.gallery__header {
+  background: #111;
+  text-align: center;
+  padding: 1.2rem 0 0.6rem;
+  font-family: serif;
+  letter-spacing: 6px;
+  font-size: 11px;
+  color: #444;
+  text-transform: uppercase;
+}
 </style>
 </head>
 
@@ -763,6 +853,7 @@ nav a:hover{
       <img src="https://i.postimg.cc/tTLtndyV/peixe-4x.png" alt="Logo 35">
     </div>
         <div class="gif-container">
+      <!-- ATENÇÃO: URL duplicada — substitua pela imagem correta do Logo 36 -->
       <img src="https://i.postimg.cc/tTLtndyV/peixe-4x.png" alt="Logo 36">
     </div>
         <div class="gif-container">
@@ -772,6 +863,7 @@ nav a:hover{
       <img src="https://i.postimg.cc/VNvj7Zkt/PIZVETE-4x.png" alt="Logo 38">
     </div>
         <div class="gif-container">
+      <!-- ATENÇÃO: URL duplicada — substitua pela imagem correta do Logo 39 -->
       <img src="https://i.postimg.cc/VNvj7Zkt/PIZVETE-4x.png" alt="Logo 39">
     </div>
         <div class="gif-container">
@@ -784,6 +876,7 @@ nav a:hover{
       <img src="https://i.postimg.cc/PrHNjdhf/texto-4x.png" alt="Logo 42">
     </div>
         <div class="gif-container">
+      <!-- ATENÇÃO: URL duplicada — substitua pela imagem correta do Logo 43 -->
       <img src="https://i.postimg.cc/PrHNjdhf/texto-4x.png" alt="Logo 43">
     </div>
         <div class="gif-container">
@@ -796,6 +889,7 @@ nav a:hover{
       <img src="https://i.postimg.cc/SNjkxWRC/veneno-4x.png" alt="Logo 46">
     </div>
        <div class="gif-container">
+      <!-- ATENÇÃO: URL duplicada — substitua pela imagem correta do Logo 47 -->
       <img src="https://i.postimg.cc/SNjkxWRC/veneno-4x.png" alt="Logo 47">
     </div>
   </div>
@@ -849,97 +943,6 @@ nav a:hover{
 </section>
 
 
-<style>
-  #gallery {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
-    background: #111;
-    overflow: hidden;
-    height: 520px;
-    padding: 0;
-    gap: 0;
-  }
-  .gallery__strip__wrapper {
-    flex: 0 0 25%;
-    overflow: hidden;
-    position: relative;
-    border-right: 1px solid #222;
-    height: 100%;
-  }
-  .gallery__strip {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1rem 0;
-  }
-  .gallery__strip.one   { animation: moveDown 18s ease-in-out alternate infinite; }
-  .gallery__strip.two   { animation: moveUp   20s ease-in-out alternate infinite; transform: translateY(-30%); }
-  .gallery__strip.three { animation: moveDown 22s ease-in-out alternate infinite; }
-  .gallery__strip.four  { animation: moveUp   16s ease-in-out alternate infinite; transform: translateY(-30%); }
-  .gallery__strip:hover { animation-play-state: paused; }
-
-  @keyframes moveDown {
-    0%,100% { transform: translateY(0%); }
-    50%      { transform: translateY(-42%); }
-  }
-  @keyframes moveUp {
-    0%,100% { transform: translateY(-30%); }
-    50%      { transform: translateY(5%); }
-  }
-
-  .photo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 0.5rem;
-    cursor: pointer;
-  }
-  .photo__image {
-    width: 100%;
-    aspect-ratio: 1;
-    overflow: hidden;
-    border-radius: 6px;
-    background: #1a1a1a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .photo__image img {
-    width: 85%;
-    height: 85%;
-    object-fit: contain;
-    transition: transform 0.6s cubic-bezier(0.19,1,0.22,1);
-  }
-  .photo:hover .photo__image img { transform: scale(1.08); }
-  .photo__name {
-    margin-top: 6px;
-    font-family: serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 0.5px #666;
-    transition: color 0.3s ease, -webkit-text-stroke-color 0.3s ease;
-  }
-  .photo:hover .photo__name {
-    color: #fff;
-    -webkit-text-stroke-color: #fff;
-  }
-
-  .gallery__header {
-    background: #111;
-    text-align: center;
-    padding: 1.2rem 0 0.6rem;
-    font-family: serif;
-    letter-spacing: 6px;
-    font-size: 11px;
-    color: #444;
-    text-transform: uppercase;
-  }
-</style>
 
 <div style="background:#111; display:flex; flex-direction:column; align-items:center; padding:40px 20px 60px;">
   <div class="gallery__header" style="width:100%; max-width:1300px;">Monograma · A–Z</div>
@@ -955,14 +958,14 @@ const links = [
   { letter: "E", url: "https://i.postimg.cc/vTyKmKmr/E-4x.png" },
   { letter: "F", url: "https://i.postimg.cc/15Jd9J1w/F-4x.png" },
   { letter: "G", url: "https://i.postimg.cc/nLQSGxjL/G-4x.png" },
-  { letter: "H", url: "https://i.postimg.cc/hjWyCYTH/G4x.png" },
-  { letter: "I", url: "https://i.postimg.cc/vTGPy6PP/H-4x.png" },
-  { letter: "J", url: "https://i.postimg.cc/C5JcxLtX/I-4x.png" },
-  { letter: "L", url: "https://i.postimg.cc/kMy1cf4H/J-4x.png" },
-  { letter: "M", url: "https://i.postimg.cc/X7H2Mq9D/L-4x.png" },
-  { letter: "N", url: "https://i.postimg.cc/qB3dCpRL/M-4x.png" },
-  { letter: "O", url: "https://i.postimg.cc/8zVkCjmw/N-4x.png" },
-  { letter: "P", url: "https://i.postimg.cc/6qfK2h0p/O-4x.png" },
+  { letter: "H", url: "https://i.postimg.cc/vTGPy6PP/H-4x.png" },
+  { letter: "I", url: "https://i.postimg.cc/C5JcxLtX/I-4x.png" },
+  { letter: "J", url: "https://i.postimg.cc/kMy1cf4H/J-4x.png" },
+  { letter: "L", url: "https://i.postimg.cc/X7H2Mq9D/L-4x.png" },
+  { letter: "M", url: "https://i.postimg.cc/qB3dCpRL/M-4x.png" },
+  { letter: "N", url: "https://i.postimg.cc/8zVkCjmw/N-4x.png" },
+  { letter: "O", url: "https://i.postimg.cc/6qfK2h0p/O-4x.png" },
+  { letter: "P", url: "https://i.postimg.cc/hjWyCYTH/P-4x.png" },
 ];
 
 function photoEl(item) {
@@ -1000,7 +1003,7 @@ cols.forEach((col, ci) => {
     <div class="contato-card">
       <i class="fa fa-envelope"></i>
       <p>Email</p>
-      <a href="/cdn-cgi/l/email-protection#ef838e9f86818b8a9c8688818a9daf88828e8683c18c8082"><span class="__cf_email__" data-cfemail="fa969b8a93949e9f89939d949f88ba9d979b9396d4999597">[email&#160;protected]</span></a>
+      <a href="mailto:lapindesigner@gmail.com">lapindesigner@gmail.com</a>
     </div>
     <div class="contato-card">
       <i class="fa fa-whatsapp"></i>
@@ -1011,8 +1014,7 @@ cols.forEach((col, ci) => {
 </section>
 
 
-<!--Start of Tawk.to Script-->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+<!--Start of Tawk.to Script--><script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
