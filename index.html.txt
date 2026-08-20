@@ -1254,7 +1254,7 @@ cols.forEach((col, ci) => {
     <div class="lapin-gifs-header">
       <div>
         <p class="lapin-gifs-eyebrow">Contact Sheet · Portfólio Lapin Designer</p>
-        <h2 class="lapin-gifs-title">Trabalhos concluidos</h2>
+        <h2 class="lapin-gifs-title">Galeria de GIFs</h2>
       </div>
       <div class="lapin-gifs-counter">
         <b id="lapinGifCount">0</b>
