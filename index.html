@@ -105,11 +105,21 @@ nav a:hover{
   color:white;
   transition:0.4s;
   box-shadow:0 0 18px rgba(30,147,250,0.5);
+  animation:btnGlow 3.2s ease-in-out infinite;
 }
 
 .btn:hover{
   background:#0d7de0;
   transform:scale(1.05);
+}
+
+@keyframes btnGlow{
+  0%,100%{
+    box-shadow:0 0 12px rgba(30,147,250,0.4), 0 0 4px rgba(30,147,250,0.3);
+  }
+  50%{
+    box-shadow:0 0 32px rgba(30,147,250,0.9), 0 0 55px rgba(30,147,250,0.5);
+  }
 }
 
 .gallery{
@@ -722,8 +732,8 @@ nav a:hover{
     Estúdio criativo especializado em logotipos, mockups, banners e design profissional.
   </p>
   <div class="botoes">
-    <a href="#logos" class="btn">Galeria</a>
-    <a href="#mockups" class="btn">Portfolio</a>
+    <a href="https://lapindegner.threadless.com/" target="_blank" rel="noopener noreferrer" class="btn">Galeria</a>
+    <a href="https://www.teepublic.com/user/https-lazarolapin-lgtm-github-io-lapindesigner360" target="_blank" rel="noopener noreferrer" class="btn">Portfolio</a>
   </div>
 </section>
 
