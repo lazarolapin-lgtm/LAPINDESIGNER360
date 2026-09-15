@@ -3,13 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lapin Designer</title>
+<title>Lapin Designer — Estúdio de Identidade Visual</title>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --ink:#181A1E;
+  --ink-soft:#54565f;
+  --paper:#FAFAF7;
+  --paper-alt:#F2F1EC;
+  --line:#DEDCD3;
+  --navy:#152A4A;
+  --navy-deep:#0E1D33;
+  --brass:#A9832F;
+  --white:#FFFFFF;
+}
+
 *{
   margin:0;
   padding:0;
@@ -18,140 +30,201 @@
 }
 
 body{
-  background:
-    linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)),
-    url('https://i.postimg.cc/SNcmK0Ng/unsplash4x.png');
+  background-image:linear-gradient(rgba(250,250,247,0.55),rgba(250,250,247,0.55)),url('bg-nyc.jpg');
   background-size:cover;
-  background-position:center center;
+  background-position:center;
   background-repeat:no-repeat;
   background-attachment:fixed;
   font-family:'Inter',sans-serif;
   overflow-x:hidden;
-  color:white;
+  color:var(--ink);
 }
 
 nav{
   position:fixed;
   top:0;
   width:100%;
-  background:rgba(0,0,0,0.85);
+  background:rgba(250,250,247,0.92);
   backdrop-filter:blur(10px);
   z-index:9999;
-  padding:18px;
+  padding:20px 44px;
   display:flex;
-  justify-content:center;
+  align-items:center;
+  justify-content:space-between;
   gap:35px;
-  border-bottom:1px solid #222;
+  border-bottom:1px solid var(--line);
+}
+
+.nav-mark{
+  font-family:'Fraunces',serif;
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:0.02em;
+  color:var(--ink);
+  text-decoration:none;
+}
+
+.nav-links{
+  display:flex;
+  gap:34px;
 }
 
 nav a{
-  color:white;
+  color:var(--ink-soft);
   text-decoration:none;
-  font-size:22px;
-  transition:0.4s;
+  font-size:14px;
+  letter-spacing:0.02em;
+  transition:0.25s;
+  position:relative;
+}
+
+nav a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:1px;
+  background:var(--navy);
+  transition:width 0.25s ease;
 }
 
 nav a:hover{
-  color:#1E93FA;
-  transform:scale(1.1);
+  color:var(--ink);
+}
+
+nav a:hover::after{
+  width:100%;
 }
 
 .hero{
-  min-height:100vh;
-  display:flex;
+  min-height:92vh;
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
   align-items:center;
-  justify-content:center;
+  gap:60px;
+  padding:160px 60px 80px;
+  max-width:1360px;
+  margin:0 auto;
+  text-align:left;
+}
+
+.hero-copy{
+  display:flex;
   flex-direction:column;
-  padding:140px 20px 60px;
-  text-align:center;
+  align-items:flex-start;
+}
+
+.hero-eyebrow{
+  font-size:14px;
+  color:var(--brass);
+  margin-bottom:18px;
+  font-weight:500;
 }
 
 .logo-img{
-  width:250px;
-  height:250px;
+  width:96px;
+  height:96px;
   object-fit:contain;
-  transition:0.5s;
-  filter:drop-shadow(0 0 20px rgba(30,147,250,0.5));
+  margin-bottom:26px;
 }
 
 .logo{
-  font-size:80px;
-  font-family:'Inter',sans-serif;
-  letter-spacing:8px;
-  margin-bottom:20px;
+  font-size:56px;
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  letter-spacing:-0.01em;
+  line-height:1.08;
+  margin-bottom:22px;
+  color:var(--ink);
 }
 
 .subtitle{
-  max-width:900px;
-  font-size:22px;
-  line-height:1.8;
-  opacity:0.9;
+  max-width:480px;
+  font-size:18px;
+  line-height:1.75;
+  color:var(--ink-soft);
+}
+
+.hero-visual{
+  border-radius:6px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 24px 60px rgba(15,25,45,0.12);
+}
+
+.hero-visual img{
+  display:block;
+  width:100%;
+  height:520px;
+  object-fit:cover;
 }
 
 .botoes{
-  margin-top:50px;
+  margin-top:44px;
   display:flex;
-  gap:25px;
+  gap:16px;
   flex-wrap:wrap;
-  justify-content:center;
+  justify-content:flex-start;
 }
 
 .btn{
-  padding:15px 40px;
-  background:#1E93FA;
-  border-radius:50px;
+  padding:13px 28px;
+  background:transparent;
+  border:1px solid var(--ink);
+  border-radius:2px;
   text-decoration:none;
-  font-size:24px;
-  color:white;
-  transition:0.4s;
-  box-shadow:0 0 18px rgba(30,147,250,0.5);
-  animation:btnGlow 3.2s ease-in-out infinite;
+  font-size:14px;
+  letter-spacing:0.02em;
+  font-weight:500;
+  color:var(--ink);
+  transition:0.25s ease;
 }
 
 .btn:hover{
-  background:#0d7de0;
-  transform:scale(1.05);
-}
-
-@keyframes btnGlow{
-  0%,100%{
-    box-shadow:0 0 12px rgba(30,147,250,0.4), 0 0 4px rgba(30,147,250,0.3);
-  }
-  50%{
-    box-shadow:0 0 32px rgba(30,147,250,0.9), 0 0 55px rgba(30,147,250,0.5);
-  }
+  background:var(--ink);
+  color:var(--paper);
 }
 
 .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
-  padding:40px;
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  padding:0;
+  max-width:1360px;
+  margin:0 auto;
 }
 
 .gif-container{
   position:relative;
   overflow:hidden;
-  border-radius:20px;
-  background:#111;
-  box-shadow:0 4px 16px rgba(0,0,0,0.5);
+  background:var(--white);
 }
 
 .gallery img{
   width:100%;
   height:300px;
   object-fit:cover;
-  transition:0.4s;
+  transition:0.5s ease;
 }
 
 .gif-container:hover img{
-  transform:scale(1.05);
+  transform:scale(1.03);
 }
 
 .titulo{
-  font-size:60px;
-  text-align:center;
-  margin-top:80px;
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:38px;
+  text-align:left;
+  max-width:1360px;
+  margin:100px auto 34px;
+  padding:0 60px;
+  color:var(--ink);
+  border-bottom:1px solid var(--line);
+  padding-bottom:24px;
 }
 
 /* ============ SEÇÃO CONTATOS ============ */
@@ -170,37 +243,43 @@ nav a:hover{
 }
 
 .contato-card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(30,147,250,0.3);
-  border-radius:20px;
-  padding:30px 40px;
-  text-align:center;
-  font-size:22px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:34px 40px;
+  text-align:left;
+  font-size:17px;
   flex:1;
   min-width:260px;
-  backdrop-filter:blur(6px);
-  transition:0.3s;
+  transition:0.25s;
 }
 
 .contato-card:hover{
-  border-color:#1E93FA;
-  background:rgba(30,147,250,0.08);
+  border-color:var(--navy);
 }
 
 .contato-card i{
-  font-size:36px;
-  color:#1E93FA;
-  margin-bottom:12px;
+  font-size:26px;
+  color:var(--navy);
+  margin-bottom:14px;
   display:block;
 }
 
+.contato-card p{
+  font-size:13px;
+  letter-spacing:0.03em;
+  color:var(--ink-soft);
+  margin-bottom:4px;
+}
+
 .contato-card a{
-  color:white;
+  color:var(--ink);
   text-decoration:none;
+  font-weight:500;
 }
 
 .contato-card a:hover{
-  color:#1E93FA;
+  color:var(--navy);
 }
 
 /* ============ LIGHTBOX ============ */
@@ -230,7 +309,7 @@ nav a:hover{
   max-height:90vh;
   object-fit:contain;
   border-radius:12px;
-  box-shadow:0 0 60px rgba(30,147,250,0.4);
+  box-shadow:0 0 50px rgba(0,0,0,0.5);
   animation:zoomInLB 0.25s ease;
   cursor:zoom-out;
 }
@@ -256,7 +335,7 @@ nav a:hover{
 
 #lightbox-close:hover{
   opacity:1;
-  color:#1E93FA;
+  color:#C9A64A;
 }
 
 .gallery img{
@@ -277,8 +356,10 @@ nav a:hover{
   width: 100%;
   height: 700px;
   object-fit: contain;
-  border-radius: 20px;
-  box-shadow: 0 4px 24px rgba(30,147,250,0.25);
+  background: var(--white);
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 32px rgba(15,25,45,0.08);
 }
 .mySlides {
   display: none;
@@ -297,8 +378,8 @@ nav a:hover{
   }
 }
 .text {
-  color: #f2f2f2;
-  font-size: 15px;
+  color: var(--ink-soft);
+  font-size: 13px;
   padding: 8px 12px;
   position: absolute;
   bottom: 8px;
@@ -306,23 +387,23 @@ nav a:hover{
   text-align: center;
 }
 .numbertext {
-  color: #f2f2f2;
+  color: var(--ink-soft);
   font-size: 12px;
   padding: 8px 12px;
   position: absolute;
   top: 0;
 }
 .dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #444;
+  height: 8px;
+  width: 8px;
+  margin: 0 3px;
+  background-color: var(--line);
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.8s ease;
 }
 .dot.active {
-  background-color: #1E93FA;
+  background-color: var(--navy);
 }
 .fade {
   animation-name: fadein;
@@ -340,14 +421,14 @@ nav a:hover{
    FOOTER STYLES
    ═══════════════════════════════════════════ */
 :root {
-  --footer-bg: #0a0a0a;
-  --footer-bg-alt: #111;
-  --footer-accent: #1E93FA;
-  --footer-text: #c4c4c4;
+  --footer-bg: #0E1D33;
+  --footer-bg-alt: #0A1628;
+  --footer-accent: #A9832F;
+  --footer-text: #B7C0CF;
   --footer-heading: #ffffff;
-  --footer-link: #b0b0b0;
-  --footer-link-hover: #1E93FA;
-  --footer-border: rgba(255,255,255,0.08);
+  --footer-link: #98A3B5;
+  --footer-link-hover: #C9A64A;
+  --footer-border: rgba(255,255,255,0.09);
 }
 
 .footer {
@@ -549,7 +630,7 @@ nav a:hover{
 .footer-newsletter input:focus {
   outline: none;
   border-color: var(--footer-accent);
-  box-shadow: 0 0 0 2px rgba(30,147,250,0.15);
+  box-shadow: 0 0 0 2px rgba(169,131,47,0.2);
 }
 
 .footer-newsletter .btn-subscribe {
@@ -626,9 +707,9 @@ nav a:hover{
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  max-width: 1300px;
+  max-width: 1360px;
   margin: 0 auto;
-  background: #111;
+  background: var(--navy-deep);
   overflow: hidden;
   height: 520px;
   padding: 0;
@@ -638,7 +719,7 @@ nav a:hover{
   flex: 0 0 25%;
   overflow: hidden;
   position: relative;
-  border-right: 1px solid #222;
+  border-right: 1px solid rgba(255,255,255,0.08);
   height: 100%;
 }
 .gallery__strip {
@@ -673,8 +754,8 @@ nav a:hover{
   width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
-  border-radius: 6px;
-  background: #1a1a1a;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.04);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -701,14 +782,76 @@ nav a:hover{
   -webkit-text-stroke-color: #fff;
 }
 .gallery__header {
-  background: #111;
-  text-align: center;
-  padding: 1.2rem 0 0.6rem;
+  background: var(--navy-deep);
+  text-align: left;
+  padding: 1.4rem 0 0.8rem;
+  max-width:1360px;
   font-family: 'Inter', sans-serif;
-  letter-spacing: 6px;
-  font-size: 11px;
-  color: #444;
+  letter-spacing: 2px;
+  font-size: 12px;
+  color: #7C8BA3;
   text-transform: uppercase;
+}
+
+@media (max-width: 900px){
+  nav{
+    padding:16px 20px;
+    gap:14px;
+  }
+  .nav-links{
+    gap:16px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  nav a{
+    font-size:12.5px;
+  }
+  .hero{
+    grid-template-columns:1fr;
+    padding:150px 24px 50px;
+    gap:36px;
+    text-align:left;
+  }
+  .hero-visual img{
+    height:340px;
+  }
+  .logo{
+    font-size:38px;
+  }
+  .titulo{
+    font-size:28px;
+    padding:0 24px 20px;
+    margin:60px auto 24px;
+  }
+  #gallery{
+    height:auto;
+    flex-direction:column;
+  }
+  .gallery__strip__wrapper{
+    flex:0 0 auto;
+    height:220px;
+    border-right:none;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .lapin-gifs-header, #lapin-gifs{
+    padding-left:24px;
+    padding-right:24px;
+  }
+  #lapin-gifs{
+    padding-top:60px;
+    padding-bottom:70px;
+  }
+  .lapin-gifs-title{
+    font-size:30px;
+  }
+  #pacotes .gif-container{
+    flex-direction:column !important;
+    height:auto !important;
+  }
+  #pacotes .gif-container > div:first-child{
+    width:100% !important;
+    height:160px;
+  }
 }
 </style>
 </head>
@@ -716,25 +859,34 @@ nav a:hover{
 <body>
 
 <nav>
-  <a href="#home">home</a>
-  <a href="#logos">logotipo</a>
-  <a href="#mockups">mockups</a>
-  <a href="#pacotes">pacotes</a>
-  <a href="#gifs">GIFs</a>
-  <a href="#contatos">contatos</a>
+  <a href="#home" class="nav-mark">Lapin Designer</a>
+  <div class="nav-links">
+    <a href="#home">Início</a>
+    <a href="#logos">Logotipos</a>
+    <a href="#mockups">Mockups</a>
+    <a href="#pacotes">Pacotes</a>
+    <a href="#gifs">Portfólio</a>
+    <a href="#contatos">Contato</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <img src="https://i.postimg.cc/65dGhTN3/LOGOLAPIN.png" class="logo-img" alt="Lapin Designer Logo">
-  <h1 class="logo">Lapin Designer</h1>
-  <p class="subtitle">
-    Estúdio criativo especializado em logotipos, mockups, banners e design profissional.
-  </p>
-  <div class="botoes">
-    <a href="https://lapindegner.threadless.com/" target="_blank" rel="noopener noreferrer" class="btn"> threadless</a>
-    <a href="https://www.teepublic.com/user/https-lazarolapin-lgtm-github-io-lapindesigner360" target="_blank" rel="noopener noreferrer" class="btn">Tepublic</a>
-<a href="https://www.redbubble.com/people/lapindesigner2/shop" target="_blank" rel="noopener noreferrer" class="btn">redbubble</a>
+  <div class="hero-copy">
+    <p class="hero-eyebrow">Estúdio de design · desde 2020</p>
+    <img src="https://i.postimg.cc/65dGhTN3/LOGOLAPIN.png" class="logo-img" alt="Lapin Designer Logo">
+    <h1 class="logo">Identidade visual com precisão e propósito.</h1>
+    <p class="subtitle">
+      Estúdio especializado em logotipos, mockups, banners e sistemas de identidade visual para marcas que levam design a sério.
+    </p>
+    <div class="botoes">
+      <a href="https://lapindegner.threadless.com/" target="_blank" rel="noopener noreferrer" class="btn">Threadless</a>
+      <a href="https://www.teepublic.com/user/https-lazarolapin-lgtm-github-io-lapindesigner360" target="_blank" rel="noopener noreferrer" class="btn">TeePublic</a>
+      <a href="https://www.redbubble.com/people/lapindesigner2/shop" target="_blank" rel="noopener noreferrer" class="btn">Redbubble</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img src="https://i.postimg.cc/3r4q7VZT/Agrupar12-4x.png" alt="Trabalho em destaque — Lapin Designer">
   </div>
 </section>
 
@@ -798,14 +950,6 @@ const LOGOS_GALERIA = [
 "https://i.postimg.cc/kXjrsmJr/DOG-4x.png",
 "https://i.postimg.cc/65bSRfcf/PIZZA-4x.png",
 "https://i.postimg.cc/d3CyrCz3/GATO3-4x.png ",
-"https://i.postimg.cc/MHYN1PRK/CAVALO-4x-2.png ",
-"https://i.postimg.cc/KzPHyq9Z/GARRAFA-4x-3.png ",
-"https://i.postimg.cc/qMMZ9GyW/LEÃO-4x-4.png ",
-"https://i.postimg.cc/pr1YNKtN/TUCANO-4x.png ",
-"https://i.postimg.cc/Yq5Y1rrX/PACK-4x-5.png ",
-"https://i.postimg.cc/kGVRbZk3/PAPAGAIO-4x-6.png ",
-"https://i.postimg.cc/xd0kRqW6/NEGO2-4x.png ",
-"https://i.postimg.cc/V5QvbNqc/SERPENTE-4x.png ",
 ];
 
 /* ========================================================================== */
@@ -859,20 +1003,20 @@ renderLogosGaleria();
   <div style="display:flex; flex-direction:column; gap:1.25rem; max-width:860px; margin:40px auto; padding:0 20px;">
 
     <!-- Card 1 -->
-    <div class="gif-container" style="display:flex; flex-direction:row; height:180px; cursor:pointer;" onclick="openLightbox(this.querySelector('img').src)">
+    <div class="gif-container" style="display:flex; flex-direction:row; height:180px; cursor:pointer; border:1px solid var(--line);" onclick="openLightbox(this.querySelector('img').src)">
       <div style="width:200px; min-width:200px; position:relative; overflow:hidden;">
-        <span style="position:absolute;top:10px;left:10px;background:#059669;color:#d1fae5;font-size:10px;padding:3px 9px;border-radius:20px;z-index:2;">Logo</span>
+        <span style="position:absolute;top:10px;left:10px;background:var(--navy);color:#fff;font-size:10px;letter-spacing:.04em;padding:4px 10px;border-radius:2px;z-index:2;">Logo</span>
         <img src="https://i.postimg.cc/prFGGSHP/cen25-4x.png" alt="Pacote Logo" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div style="flex:1; padding:1.1rem 1.4rem; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6b6b80;">Identidade Visual</div>
-          <div style="font-size:1rem;font-weight:600;margin:6px 0;">Pacote Logotipo</div>
-          <div style="font-size:13px;color:#7a7a96;">Logotipo profissional com variações, paleta de cores e entrega em todos os formatos.</div>
+          <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);">Identidade Visual</div>
+          <div style="font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;margin:6px 0;color:var(--ink);">Pacote Logotipo</div>
+          <div style="font-size:13px;color:var(--ink-soft);">Logotipo profissional com variações, paleta de cores e entrega em todos os formatos.</div>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;">
-          <span style="font-size:1.2rem;font-weight:700;">R$ 250</span>
-          <a href="https://wa.me/5511961053967" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" style="background:#1E93FA;color:white;border-radius:8px;padding:7px 16px;font-size:13px;text-decoration:none;">Solicitar</a>
+          <span style="font-size:1.2rem;font-weight:600;color:var(--ink);">R$ 250</span>
+          <a href="https://wa.me/5511961053967" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" style="background:var(--navy);color:white;border-radius:2px;padding:8px 18px;font-size:13px;text-decoration:none;">Solicitar</a>
         </div>
       </div>
     </div>
@@ -884,9 +1028,9 @@ renderLogosGaleria();
 
 
 
-<div style="background:#111; display:flex; flex-direction:column; align-items:center; padding:40px 20px 60px;">
-  <div class="gallery__header" style="width:100%; max-width:1300px;">Monograma · A–Z</div>
-  <div class="gallery" id="gallery" style="margin:0 auto;"></div>
+<div style="background:var(--navy-deep); display:flex; flex-direction:column; align-items:center; padding:40px 0 60px;">
+  <div class="gallery__header" style="width:100%; max-width:1360px; padding-left:60px; padding-right:60px;">Monogramas de A a Z</div>
+  <div class="gallery" id="gallery" style="margin:0 auto; background:transparent; border:none; max-width:1360px;"></div>
 </div>
 
 <script>
@@ -942,53 +1086,54 @@ cols.forEach((col, ci) => {
    Baseada na galeria-gifs.html enviada.
    ========================================================= */
 #lapin-gifs{
-  background:rgba(13,0,0,.72);
-  padding:70px 20px 90px;
+  background:var(--navy-deep);
+  padding:80px 60px 100px;
 }
 
 .lapin-gifs-header{
-  max-width:1400px;
+  max-width:1360px;
   margin:0 auto 30px;
   display:flex;
   align-items:flex-end;
   justify-content:space-between;
   gap:20px;
   flex-wrap:wrap;
-  border-bottom:1px solid rgba(30,147,250,.25);
-  padding-bottom:20px;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  padding-bottom:22px;
 }
 
 .lapin-gifs-eyebrow{
   margin:0 0 7px;
   font-family:'Inter',sans-serif;
   font-size:12px;
-  letter-spacing:.18em;
-  color:#1E93FA;
+  letter-spacing:.1em;
+  color:#C9A64A;
   text-transform:uppercase;
 }
 
 .lapin-gifs-title{
   margin:0;
-  font-family:'Inter',sans-serif;
-  font-size:52px;
-  letter-spacing:3px;
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:40px;
+  letter-spacing:0;
   color:#fff;
 }
 
 .lapin-gifs-counter{
   font-family:'Inter',sans-serif;
   font-size:13px;
-  color:#aaa;
+  color:#98A3B5;
   text-align:right;
 }
 .lapin-gifs-counter b{
   display:block;
-  color:#1E93FA;
+  color:#C9A64A;
   font-size:24px;
 }
 
 .lapin-gifs-main{
-  max-width:1400px;
+  max-width:1360px;
   margin:auto;
 }
 
@@ -999,34 +1144,34 @@ cols.forEach((col, ci) => {
 }
 
 .lapin-gif-frame{
-  background:rgba(17,17,17,.92);
-  border:1px solid rgba(30,147,250,.18);
-  border-radius:15px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:4px;
   overflow:hidden;
   position:relative;
-  box-shadow:0 8px 25px rgba(0,0,0,.35);
+  box-shadow:none;
   transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
 }
 
 .lapin-gif-frame:hover{
-  transform:translateY(-5px);
-  border-color:rgba(30,147,250,.65);
-  box-shadow:0 12px 35px rgba(30,147,250,.12);
+  transform:translateY(-4px);
+  border-color:rgba(201,166,74,.5);
+  box-shadow:0 16px 32px rgba(0,0,0,.3);
 }
 
 .lapin-sprocket-row{
   display:flex;
   justify-content:space-evenly;
   padding:6px 10px;
-  background:#080808;
+  background:rgba(0,0,0,.25);
 }
 
 .lapin-sprocket{
   width:7px;
   height:7px;
-  border-radius:2px;
-  background:#171717;
-  border:1px solid #222;
+  border-radius:1px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
 }
 
 .lapin-frame-label{
@@ -1037,13 +1182,13 @@ cols.forEach((col, ci) => {
   padding:9px 12px;
   font-family:'Inter',sans-serif;
   font-size:11px;
-  letter-spacing:.05em;
-  color:#aaa;
-  background:#080808;
+  letter-spacing:.04em;
+  color:#98A3B5;
+  background:rgba(0,0,0,.25);
 }
 
 .lapin-frame-label .num{
-  color:#1E93FA;
+  color:#C9A64A;
   font-weight:700;
 }
 
@@ -1076,8 +1221,8 @@ cols.forEach((col, ci) => {
   right:12px;
   bottom:12px;
   background:rgba(0,0,0,.78);
-  color:#1E93FA;
-  border:1px solid rgba(30,147,250,.3);
+  color:#C9A64A;
+  border:1px solid rgba(201,166,74,.35);
   font-family:'Inter',sans-serif;
   font-size:10px;
   letter-spacing:.06em;
@@ -1100,37 +1245,37 @@ cols.forEach((col, ci) => {
   align-items:center;
   gap:8px;
   padding:10px 12px;
-  border-top:1px solid rgba(255,255,255,.07);
-  background:#0b0b0b;
+  border-top:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.2);
 }
 
 .lapin-frame-link a{
   width:100%;
   display:block;
   text-align:center;
-  background:#1E93FA;
+  background:var(--navy);
   color:#fff;
   text-decoration:none;
   font-family:'Inter',sans-serif;
   font-size:12px;
   font-weight:600;
-  padding:8px 12px;
-  border-radius:8px;
+  padding:9px 12px;
+  border-radius:2px;
   transition:.25s ease;
 }
 
 .lapin-frame-link a:hover{
-  background:#0d7de0;
+  background:#1E3A63;
   transform:translateY(-1px);
 }
 
 .lapin-gifs-note{
-  max-width:1400px;
-  margin:22px auto 0;
+  max-width:1360px;
+  margin:26px auto 0;
   font-family:'Inter',sans-serif;
   font-size:11px;
-  color:#888;
-  text-align:center;
+  color:#7C8BA3;
+  text-align:left;
 }
 
 @media(max-width:600px){
@@ -1169,7 +1314,7 @@ cols.forEach((col, ci) => {
   max-height:90vh;
   object-fit:contain;
   border-radius:14px;
-  box-shadow:0 0 55px rgba(30,147,250,.3);
+  box-shadow:0 0 45px rgba(0,0,0,0.5);
 }
 #lapinGifModalClose{
   position:absolute;
@@ -1183,7 +1328,7 @@ cols.forEach((col, ci) => {
   cursor:pointer;
 }
 #lapinGifModalClose:hover{
-  color:#1E93FA;
+  color:#C9A64A;
 }
 </style>
 
