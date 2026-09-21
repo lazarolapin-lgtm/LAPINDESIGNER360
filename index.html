@@ -40,6 +40,13 @@ body{
   color:var(--ink);
 }
 
+/* background-attachment:fixed não é bem suportado em celulares (trava/some) */
+@media (max-width: 900px){
+  body{
+    background-attachment:scroll;
+  }
+}
+
 nav{
   position:fixed;
   top:0;
