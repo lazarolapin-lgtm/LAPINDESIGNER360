@@ -221,6 +221,73 @@ nav a:hover::after{
   transform:scale(1.03);
 }
 
+.gallery-switch-bar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  max-width:1360px;
+  margin:0 auto 28px;
+}
+
+.gallery-switch-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:13px 28px;
+  background:transparent;
+  border:1px solid var(--ink);
+  border-radius:2px;
+  font-size:14px;
+  letter-spacing:0.02em;
+  font-weight:500;
+  color:var(--ink);
+  cursor:pointer;
+  transition:0.25s ease;
+  font-family:inherit;
+}
+
+.gallery-switch-btn:hover{
+  background:var(--ink);
+  color:var(--paper);
+}
+
+.gallery-switch-btn i{
+  transition:transform .35s ease;
+}
+
+.gallery-switch-btn.is-flipped i{
+  transform:rotate(180deg);
+}
+
+.gallery-switch-label{
+  font-size:13px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+
+.gallery-slider-wrap{
+  overflow:hidden;
+  max-width:1360px;
+  margin:0 auto;
+}
+
+.gallery-slider{
+  display:flex;
+  width:200%;
+  transition:transform .6s cubic-bezier(.4,0,.2,1);
+}
+
+.gallery-slide{
+  flex:0 0 50%;
+  width:50%;
+}
+
+.gallery-slide .gallery{
+  margin:0;
+}
+
 .titulo{
   font-family:'Fraunces',serif;
   font-weight:500;
@@ -931,12 +998,30 @@ nav a:hover::after{
 </section>
 <section id="logos">
   <h2 class="titulo">Galeria</h2>
-  <div class="gallery" id="logosGallery"></div>
+
+  <div class="gallery-switch-bar">
+    <span class="gallery-switch-label" id="galSwitchLabel">Galeria 01</span>
+    <button type="button" class="gallery-switch-btn" id="galSwitchBtn" onclick="toggleLogosGaleria()">
+      <span id="galSwitchText">Ver outra galeria</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+
+  <div class="gallery-slider-wrap">
+    <div class="gallery-slider" id="logosSlider">
+      <div class="gallery-slide">
+        <div class="gallery" id="logosGallery2"></div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery" id="logosGallery"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <script>
 /* ==========================================================================
-   GALERIA — COLE SEUS LINKS AQUI
+   GALERIA 01 — COLE SEUS LINKS AQUI
    ---------------------------------------------------------------------
    Adicione quantas URLs quiser dentro do array abaixo, uma por linha,
    entre aspas e separadas por vírgula. Funciona com imagens estáticas
@@ -967,14 +1052,27 @@ const LOGOS_GALERIA = [
 "https://i.postimg.cc/N0rXmsSY/CROK5-4x.png",
 ];
 
+/* ==========================================================================
+   GALERIA 02 — COLE SEUS LINKS AQUI (fica do lado esquerdo, acessada pelo botão)
+   ---------------------------------------------------------------------
+   Mesma lógica da Galeria 01: adicione quantas URLs quiser, uma por linha,
+   entre aspas e separadas por vírgula.
+   ========================================================================== */
+
+const LOGOS_GALERIA_2 = [
+"https://i.postimg.cc/k4jWL0rx/ARIETE-4x.png",
+"https://i.postimg.cc/2yMhSnS7/CAMARAO-4x.png",
+"https://i.postimg.cc/Vvx081KG/CAMELO-4x.png",
+];
+
 /* ========================================================================== */
 
-function renderLogosGaleria(){
-  const container = document.getElementById('logosGallery');
+function renderGaleria(containerId, urls){
+  const container = document.getElementById(containerId);
   if(!container) return;
   container.innerHTML = '';
 
-  LOGOS_GALERIA.forEach((url, index) => {
+  urls.forEach((url, index) => {
     const wrap = document.createElement('div');
     wrap.className = 'gif-container';
 
@@ -991,7 +1089,35 @@ function renderLogosGaleria(){
   });
 }
 
-renderLogosGaleria();
+renderGaleria('logosGallery', LOGOS_GALERIA);
+renderGaleria('logosGallery2', LOGOS_GALERIA_2);
+
+/* Alterna entre a Galeria 01 (direita, padrão) e a Galeria 02 (esquerda) */
+let logosGaleriaAtiva = 1;
+
+function toggleLogosGaleria(){
+  const slider = document.getElementById('logosSlider');
+  const btn = document.getElementById('galSwitchBtn');
+  const label = document.getElementById('galSwitchLabel');
+  const text = document.getElementById('galSwitchText');
+
+  logosGaleriaAtiva = logosGaleriaAtiva === 1 ? 2 : 1;
+
+  if(logosGaleriaAtiva === 2){
+    slider.style.transform = 'translateX(0%)';
+    btn.classList.add('is-flipped');
+    label.textContent = 'Galeria 02';
+    text.textContent = 'Voltar à galeria 01';
+  } else {
+    slider.style.transform = 'translateX(-50%)';
+    btn.classList.remove('is-flipped');
+    label.textContent = 'Galeria 01';
+    text.textContent = 'Ver outra galeria';
+  }
+}
+
+/* Posição inicial: mostra a Galeria 01 (a original, à direita) */
+document.getElementById('logosSlider').style.transform = 'translateX(-50%)';
 </script>
 
 <!-- MOCKUPS -->
