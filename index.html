@@ -438,9 +438,6 @@ nav a:hover::after{
 .mySlides {
   display: none;
 }
-.dot {
-  cursor: pointer;
-}
 @media (max-width: 768px) {
   .slideshow-container img {
     height: 380px;
@@ -474,6 +471,7 @@ nav a:hover::after{
   background-color: var(--line);
   border-radius: 50%;
   display: inline-block;
+  cursor: pointer;
   transition: background-color 0.8s ease;
 }
 .dot.active {
@@ -927,306 +925,8 @@ nav a:hover::after{
     height:160px;
   }
 }
-</style>
-</head>
 
-<body>
-
-<nav>
-  <a href="#home" class="nav-mark">Lapin Designer</a>
-  <div class="nav-links">
-    <a href="#home">Início</a>
-    <a href="#logos">Logotipos</a>
-    <a href="#mockups">Mockups</a>
-    <a href="#pacotes">Pacotes</a>
-    <a href="#gifs">Portfólio</a>
-    <a href="#contatos">Contato</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-copy">
-    <p class="hero-eyebrow">Estúdio de design · desde 2020</p>
-    <img src="https://i.postimg.cc/65dGhTN3/LOGOLAPIN.png" class="logo-img" alt="Lapin Designer Logo">
-    <h1 class="logo">Identidade visual com precisão e propósito.</h1>
-    <p class="subtitle">
-      Estúdio especializado em logotipos, mockups, banners e sistemas de identidade visual para marcas que levam design a sério.
-    </p>
-    <div class="botoes">
-      <a href="https://lapindegner.threadless.com/" target="_blank" rel="noopener noreferrer" class="btn">Threadless</a>
-      <a href="https://www.teepublic.com/user/https-lazarolapin-lgtm-github-io-lapindesigner360" target="_blank" rel="noopener noreferrer" class="btn">TeePublic</a>
-      <a href="https://www.redbubble.com/people/lapindesigner2/shop" target="_blank" rel="noopener noreferrer" class="btn">Redbubble</a>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <img src="https://i.postimg.cc/0Nft7vCm/Illuminated-Cube-Sign-Mockup.png" alt="Trabalho em destaque — Lapin Designer">
-  </div>
-</section>
-
-<!-- SLIDESHOW AUTOMÁTICO -->
-<section id="slideshow-section">
-<div class="slideshow-container">
-<div class="mySlides fade">
-  <div class="numbertext">1 / 4</div>
-  <img src="https://i.postimg.cc/5twfXjr8/T1-4x.png" style="width:100%" alt="peixe-4x.png">
-  <div class="text">01-4x.png</div>
-</div>
-<div class="mySlides fade">
-  <div class="numbertext">2 / 4</div>
-  <img src="https://i.postimg.cc/RFd9Ty4S/T2-4x.png" style="width:100%" alt="CNOURA.png">
-  <div class="text">02-4X.png</div>
-</div>
-<div class="mySlides fade">
-  <div class="numbertext">3 / 4</div>
-  <img src="https://i.postimg.cc/wMBz42jc/T3-4x.png" style="width:100%" alt="VENENO.png">
-  <div class="text">03-4x.png</div>
-</div>
-  <div class="mySlides fade">
-  <div class="numbertext">4 / 4</div>
-  <img src="https://i.postimg.cc/d3SYbC7Y/T5-4x.png" style="width:100%" alt="ke-(3).png">
-  <div class="text">04-4x.png</div>
-</div>
-<br>
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-  <span class="dot" onclick="currentSlide(4)"></span>
-</div>
-</div>
-</section>
-<section id="logos">
-  <h2 class="titulo">Galeria</h2>
-
-  <div class="gallery-switch-bar">
-    <span class="gallery-switch-label" id="galSwitchLabel">Galeria 01</span>
-    <button type="button" class="gallery-switch-btn" id="galSwitchBtn" onclick="toggleLogosGaleria()">
-      <span id="galSwitchText">Ver outra galeria</span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </button>
-  </div>
-
-  <div class="gallery-slider-wrap">
-    <div class="gallery-slider" id="logosSlider">
-      <div class="gallery-slide">
-        <div class="gallery" id="logosGallery2"></div>
-      </div>
-      <div class="gallery-slide">
-        <div class="gallery" id="logosGallery"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-/* ==========================================================================
-   GALERIA 01 — COLE SEUS LINKS AQUI
-   ---------------------------------------------------------------------
-   Adicione quantas URLs quiser dentro do array abaixo, uma por linha,
-   entre aspas e separadas por vírgula. Funciona com imagens estáticas
-   e GIFs (recomendado: 2000x2000).
-   ========================================================================== */
-
-const LOGOS_GALERIA = [
-"https://i.postimg.cc/k4jWL0rx/ARIETE-4x.png",
-"https://i.postimg.cc/2yMhSnS7/CAMARAO-4x.png",
-"https://i.postimg.cc/Vvx081KG/CAMELO-4x.png",
-"https://i.postimg.cc/g0zXdgHs/FURIOSO-4x.png",
-"https://i.postimg.cc/BncMQZdb/GATO-4x.png",
-"https://i.postimg.cc/NMy6TQPg/MARIPOSA-4x.png",
-"https://i.postimg.cc/SQMLxN9Q/PEIXE-4x.png",
-"https://i.postimg.cc/Hx7sDLxC/CAFE1-4x.png",
-"https://i.postimg.cc/xTPjSh00/CAFE2-4x.png",
-"https://i.postimg.cc/JnJmYdTf/E1-4x.png",	
-"https://i.postimg.cc/kXjrsmJr/DOG-4x.png",
-"https://i.postimg.cc/65bSRfcf/PIZZA-4x.png",
-"https://i.postimg.cc/d3CyrCz3/GATO3-4x.png",
-"https://i.postimg.cc/vTmHTt1M/king2-4x.png",
-"https://i.postimg.cc/pX4XV8PR/rei23-4x.png",
-"https://i.postimg.cc/0QX1WRQP/RR-4x.png",
-"https://i.postimg.cc/130hxNtr/rato2-4x.png",
-"https://i.postimg.cc/Jtwgv1Wm/rato1-4x.png",
-"https://i.postimg.cc/0QBCxWT0/B45-4x.png",
-"https://i.postimg.cc/vTn2Kw4m/BOLL-4x.png",
-"https://i.postimg.cc/N0rXmsSY/CROK5-4x.png",
-];
-
-/* ==========================================================================
-   GALERIA 02 — COLE SEUS LINKS AQUI (fica do lado esquerdo, acessada pelo botão)
-   ---------------------------------------------------------------------
-   Mesma lógica da Galeria 01: adicione quantas URLs quiser, uma por linha,
-   entre aspas e separadas por vírgula.
-   ========================================================================== */
-
-const LOGOS_GALERIA_2 = [
-"https://i.postimg.cc/XqsKKjr8/p1-4x.png ",
-"https://i.postimg.cc/m2ryLHnc/p2-4x.png ",
-"https://i.postimg.cc/TPnr7qKC/p3-4x.png ",
-"https://i.postimg.cc/QtXW6LGd/p7-4x.png ",
-"https://i.postimg.cc/yxGgYkJZ/p11-4x.png ",
-"https://i.postimg.cc/vH1x2LjX/P13-4x.png ",
-"https://i.postimg.cc/856PBtsL/P17-4x.png ",
-"https://i.postimg.cc/NfLRqwyr/p4-4x.png ",
-];
-
-/* ========================================================================== */
-
-function renderGaleria(containerId, urls){
-  const container = document.getElementById(containerId);
-  if(!container) return;
-  container.innerHTML = '';
-
-  urls.forEach((url, index) => {
-    const wrap = document.createElement('div');
-    wrap.className = 'gif-container';
-
-    const img = document.createElement('img');
-    img.src = url;
-    img.alt = 'Logo ' + (index + 1);
-    img.loading = 'lazy';
-    img.decoding = 'async';
-
-    img.addEventListener('click', () => openLightbox(url));
-
-    wrap.appendChild(img);
-    container.appendChild(wrap);
-  });
-}
-
-renderGaleria('logosGallery', LOGOS_GALERIA);
-renderGaleria('logosGallery2', LOGOS_GALERIA_2);
-
-/* Alterna entre a Galeria 01 (direita, padrão) e a Galeria 02 (esquerda) */
-let logosGaleriaAtiva = 1;
-
-function toggleLogosGaleria(){
-  const slider = document.getElementById('logosSlider');
-  const btn = document.getElementById('galSwitchBtn');
-  const label = document.getElementById('galSwitchLabel');
-  const text = document.getElementById('galSwitchText');
-
-  logosGaleriaAtiva = logosGaleriaAtiva === 1 ? 2 : 1;
-
-  if(logosGaleriaAtiva === 2){
-    slider.style.transform = 'translateX(0%)';
-    btn.classList.add('is-flipped');
-    label.textContent = 'Galeria 02';
-    text.textContent = 'Voltar à galeria 01';
-  } else {
-    slider.style.transform = 'translateX(-50%)';
-    btn.classList.remove('is-flipped');
-    label.textContent = 'Galeria 01';
-    text.textContent = 'Ver outra galeria';
-  }
-}
-
-/* Posição inicial: mostra a Galeria 01 (a original, à direita) */
-document.getElementById('logosSlider').style.transform = 'translateX(-50%)';
-</script>
-
-<!-- MOCKUPS -->
-<section id="mockups">
-  <h2 class="titulo">Mockups</h2>
-  <div class="gallery">
-    <div class="gif-container">
-      <img src="https://i.postimg.cc/N0jmp80F/as12-4x.png" alt="Mockup 1">
-    </div>
-    <div class="gif-container">
-      <img src="https://i.postimg.cc/P5P8DXVV/Forma-Subtrair-Subtrair-4x.png" alt="Mockup 2">
-    </div>
-     <div class="gif-container">
-      <img src="https://i.postimg.cc/ZqHrRgrX/Business-Card-Mockup-Subtrair-Subtrair-5x45.png" alt="Mockup 3">
-    </div>
-    <div class="gif-container">
-      <img src="https://i.postimg.cc/mkvKS2N7/bneer-4x.png" alt="Mockup 4">
-    </div>
-  </div>
-</section>
-<!-- PACOTES / CARDS DE PRODUTO -->
-<section id="pacotes">
-  <h2 class="titulo">Pacotes</h2>
-  <div style="display:flex; flex-direction:column; gap:1.25rem; max-width:860px; margin:40px auto; padding:0 20px;">
-
-    <!-- Card 1 -->
-    <div class="gif-container" style="display:flex; flex-direction:row; height:180px; cursor:pointer; border:1px solid var(--line);" onclick="openLightbox(this.querySelector('img').src)">
-      <div style="width:200px; min-width:200px; position:relative; overflow:hidden;">
-        <span style="position:absolute;top:10px;left:10px;background:var(--navy);color:#fff;font-size:10px;letter-spacing:.04em;padding:4px 10px;border-radius:2px;z-index:2;">Logo</span>
-        <img src="https://i.postimg.cc/prFGGSHP/cen25-4x.png" alt="Pacote Logo" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div style="flex:1; padding:1.1rem 1.4rem; display:flex; flex-direction:column; justify-content:space-between;">
-        <div>
-          <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);">Identidade Visual</div>
-          <div style="font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;margin:6px 0;color:var(--ink);">Pacote Logotipo</div>
-          <div style="font-size:13px;color:var(--ink-soft);">Logotipo profissional com variações, paleta de cores e entrega em todos os formatos.</div>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;">
-          <span style="font-size:1.2rem;font-weight:600;color:var(--ink);">R$ 250</span>
-          <a href="https://wa.me/5511961053967" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" style="background:var(--navy);color:white;border-radius:2px;padding:8px 18px;font-size:13px;text-decoration:none;">Solicitar</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Repita o bloco acima para os outros pacotes -->
-
-  </div>
-</section>
-
-
-
-<div style="background:var(--navy-deep); display:flex; flex-direction:column; align-items:center; padding:40px 0 60px;">
-  <div class="gallery__header" style="width:100%; max-width:1360px; padding-left:60px; padding-right:60px;">Monogramas de A a Z</div>
-  <div class="gallery" id="gallery" style="margin:0 auto; background:transparent; border:none; max-width:1360px;"></div>
-</div>
-
-<script>
-const links = [
-  { letter: "A", url: "https://i.postimg.cc/fyQG9L8d/A-4x.png" },
-  { letter: "B", url: "https://i.postimg.cc/httHxN12/B-4x.png" },
-  { letter: "C", url: "https://i.postimg.cc/XvZm1FhZ/C-4x.png" },
-  { letter: "D", url: "https://i.postimg.cc/6QDSkqJn/D-4x.png" },
-  { letter: "E", url: "https://i.postimg.cc/vTyKmKmr/E-4x.png" },
-  { letter: "F", url: "https://i.postimg.cc/15Jd9J1w/F-4x.png" },
-  { letter: "G", url: "https://i.postimg.cc/nLQSGxjL/G-4x.png" },
-  { letter: "H", url: "https://i.postimg.cc/vTGPy6PP/H-4x.png" },
-  { letter: "I", url: "https://i.postimg.cc/C5JcxLtX/I-4x.png" },
-  { letter: "J", url: "https://i.postimg.cc/kMy1cf4H/J-4x.png" },
-  { letter: "L", url: "https://i.postimg.cc/X7H2Mq9D/L-4x.png" },
-  { letter: "M", url: "https://i.postimg.cc/qB3dCpRL/M-4x.png" },
-  { letter: "N", url: "https://i.postimg.cc/8zVkCjmw/N-4x.png" },
-  { letter: "O", url: "https://i.postimg.cc/6qfK2h0p/O-4x.png" },
-  { letter: "P", url: "https://i.postimg.cc/hjWyCYTH/P-4x.png" },
-];
-
-function photoEl(item) {
-  const div = document.createElement("div");
-  div.className = "photo";
-  div.innerHTML = `
-    <div class="photo__image"><img src="${item.url}" alt="Monograma ${item.letter}" loading="lazy"></div>
-    <div class="photo__name">${item.letter}</div>
-  `;
-  return div;
-}
-
-const cols = [[], [], [], []];
-links.forEach((item, i) => cols[i % 4].push(item));
-
-const gallery = document.getElementById("gallery");
-const classes = ["one", "two", "three", "four"];
-
-cols.forEach((col, ci) => {
-  const wrapper = document.createElement("div");
-  wrapper.className = "gallery__strip__wrapper";
-  const strip = document.createElement("div");
-  strip.className = `gallery__strip ${classes[ci]}`;
-  const doubled = [...col, ...col, ...col];
-  doubled.forEach(item => strip.appendChild(photoEl(item)));
-  wrapper.appendChild(strip);
-  gallery.appendChild(wrapper);
-});
-</script>
-<!-- GALERIA GIFS / PORTFÓLIO -->
-<style>
+/* ===== GALERIA GIFS / PORTFÓLIO (movido do body para o head) ===== */
 /* =========================================================
    GALERIA GIFS ADAPTADA AO LAPIN DESIGNER
    Baseada na galeria-gifs.html enviada.
@@ -1477,6 +1177,304 @@ cols.forEach((col, ci) => {
   color:#C9A64A;
 }
 </style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#home" class="nav-mark">Lapin Designer</a>
+  <div class="nav-links">
+    <a href="#home">Início</a>
+    <a href="#logos">Logotipos</a>
+    <a href="#mockups">Mockups</a>
+    <a href="#pacotes">Pacotes</a>
+    <a href="#gifs">Portfólio</a>
+    <a href="#contatos">Contato</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <p class="hero-eyebrow">Estúdio de design · desde 2020</p>
+    <img src="https://i.postimg.cc/65dGhTN3/LOGOLAPIN.png" class="logo-img" alt="Lapin Designer Logo">
+    <h1 class="logo">Identidade visual com precisão e propósito.</h1>
+    <p class="subtitle">
+      Estúdio especializado em logotipos, mockups, banners e sistemas de identidade visual para marcas que levam design a sério.
+    </p>
+    <div class="botoes">
+      <a href="https://lapindegner.threadless.com/" target="_blank" rel="noopener noreferrer" class="btn">Threadless</a>
+      <a href="https://www.teepublic.com/user/https-lazarolapin-lgtm-github-io-lapindesigner360" target="_blank" rel="noopener noreferrer" class="btn">TeePublic</a>
+      <a href="https://www.redbubble.com/people/lapindesigner2/shop" target="_blank" rel="noopener noreferrer" class="btn">Redbubble</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img src="https://i.postimg.cc/0Nft7vCm/Illuminated-Cube-Sign-Mockup.png" alt="Trabalho em destaque — Lapin Designer">
+  </div>
+</section>
+
+<!-- SLIDESHOW AUTOMÁTICO -->
+<section id="slideshow-section">
+<div class="slideshow-container">
+<div class="mySlides fade">
+  <div class="numbertext">1 / 4</div>
+  <img src="https://i.postimg.cc/5twfXjr8/T1-4x.png" style="width:100%" alt="peixe-4x.png">
+  <div class="text">01-4x.png</div>
+</div>
+<div class="mySlides fade">
+  <div class="numbertext">2 / 4</div>
+  <img src="https://i.postimg.cc/RFd9Ty4S/T2-4x.png" style="width:100%" alt="CNOURA.png">
+  <div class="text">02-4X.png</div>
+</div>
+<div class="mySlides fade">
+  <div class="numbertext">3 / 4</div>
+  <img src="https://i.postimg.cc/wMBz42jc/T3-4x.png" style="width:100%" alt="VENENO.png">
+  <div class="text">03-4x.png</div>
+</div>
+  <div class="mySlides fade">
+  <div class="numbertext">4 / 4</div>
+  <img src="https://i.postimg.cc/d3SYbC7Y/T5-4x.png" style="width:100%" alt="ke-(3).png">
+  <div class="text">04-4x.png</div>
+</div>
+<br>
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(4)"></span>
+</div>
+</div>
+</section>
+<section id="logos">
+  <h2 class="titulo">Galeria</h2>
+
+  <div class="gallery-switch-bar">
+    <span class="gallery-switch-label" id="galSwitchLabel">Galeria 01</span>
+    <button type="button" class="gallery-switch-btn" id="galSwitchBtn" onclick="toggleLogosGaleria()">
+      <span id="galSwitchText">Ver outra galeria</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+
+  <div class="gallery-slider-wrap">
+    <div class="gallery-slider" id="logosSlider">
+      <div class="gallery-slide">
+        <div class="gallery" id="logosGallery2"></div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery" id="logosGallery"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ==========================================================================
+   GALERIA 01 — COLE SEUS LINKS AQUI
+   ---------------------------------------------------------------------
+   Adicione quantas URLs quiser dentro do array abaixo, uma por linha,
+   entre aspas e separadas por vírgula. Funciona com imagens estáticas
+   e GIFs (recomendado: 2000x2000).
+   ========================================================================== */
+
+const LOGOS_GALERIA = [
+"https://i.postimg.cc/k4jWL0rx/ARIETE-4x.png",
+"https://i.postimg.cc/2yMhSnS7/CAMARAO-4x.png",
+"https://i.postimg.cc/Vvx081KG/CAMELO-4x.png",
+"https://i.postimg.cc/g0zXdgHs/FURIOSO-4x.png",
+"https://i.postimg.cc/BncMQZdb/GATO-4x.png",
+"https://i.postimg.cc/NMy6TQPg/MARIPOSA-4x.png",
+"https://i.postimg.cc/SQMLxN9Q/PEIXE-4x.png",
+"https://i.postimg.cc/Hx7sDLxC/CAFE1-4x.png",
+"https://i.postimg.cc/xTPjSh00/CAFE2-4x.png",
+"https://i.postimg.cc/JnJmYdTf/E1-4x.png",	
+"https://i.postimg.cc/kXjrsmJr/DOG-4x.png",
+"https://i.postimg.cc/65bSRfcf/PIZZA-4x.png",
+"https://i.postimg.cc/d3CyrCz3/GATO3-4x.png",
+"https://i.postimg.cc/vTmHTt1M/king2-4x.png",
+"https://i.postimg.cc/pX4XV8PR/rei23-4x.png",
+"https://i.postimg.cc/0QX1WRQP/RR-4x.png",
+"https://i.postimg.cc/130hxNtr/rato2-4x.png",
+"https://i.postimg.cc/Jtwgv1Wm/rato1-4x.png",
+"https://i.postimg.cc/0QBCxWT0/B45-4x.png",
+"https://i.postimg.cc/vTn2Kw4m/BOLL-4x.png",
+"https://i.postimg.cc/N0rXmsSY/CROK5-4x.png",
+];
+
+/* ==========================================================================
+   GALERIA 02 — COLE SEUS LINKS AQUI (fica do lado esquerdo, acessada pelo botão)
+   ---------------------------------------------------------------------
+   Mesma lógica da Galeria 01: adicione quantas URLs quiser, uma por linha,
+   entre aspas e separadas por vírgula.
+   ========================================================================== */
+
+const LOGOS_GALERIA_2 = [
+"https://i.postimg.cc/XqsKKjr8/p1-4x.png",
+"https://i.postimg.cc/m2ryLHnc/p2-4x.png",
+"https://i.postimg.cc/TPnr7qKC/p3-4x.png",
+"https://i.postimg.cc/QtXW6LGd/p7-4x.png",
+"https://i.postimg.cc/yxGgYkJZ/p11-4x.png",
+"https://i.postimg.cc/vH1x2LjX/P13-4x.png",
+"https://i.postimg.cc/856PBtsL/P17-4x.png",
+"https://i.postimg.cc/NfLRqwyr/p4-4x.png",
+];
+
+/* ========================================================================== */
+
+function renderGaleria(containerId, urls){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  container.innerHTML = '';
+
+  urls.forEach((url, index) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'gif-container';
+
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = 'Logo ' + (index + 1);
+    img.loading = 'lazy';
+    img.decoding = 'async';
+
+    img.addEventListener('click', () => openLightbox(url));
+
+    wrap.appendChild(img);
+    container.appendChild(wrap);
+  });
+}
+
+renderGaleria('logosGallery', LOGOS_GALERIA);
+renderGaleria('logosGallery2', LOGOS_GALERIA_2);
+
+/* Alterna entre a Galeria 01 (direita, padrão) e a Galeria 02 (esquerda) */
+let logosGaleriaAtiva = 1;
+
+function toggleLogosGaleria(){
+  const slider = document.getElementById('logosSlider');
+  const btn = document.getElementById('galSwitchBtn');
+  const label = document.getElementById('galSwitchLabel');
+  const text = document.getElementById('galSwitchText');
+
+  logosGaleriaAtiva = logosGaleriaAtiva === 1 ? 2 : 1;
+
+  if(logosGaleriaAtiva === 2){
+    slider.style.transform = 'translateX(0%)';
+    btn.classList.add('is-flipped');
+    label.textContent = 'Galeria 02';
+    text.textContent = 'Voltar à galeria 01';
+  } else {
+    slider.style.transform = 'translateX(-50%)';
+    btn.classList.remove('is-flipped');
+    label.textContent = 'Galeria 01';
+    text.textContent = 'Ver outra galeria';
+  }
+}
+
+/* Posição inicial: mostra a Galeria 01 (a original, à direita) */
+document.getElementById('logosSlider').style.transform = 'translateX(-50%)';
+</script>
+
+<!-- MOCKUPS -->
+<section id="mockups">
+  <h2 class="titulo">Mockups</h2>
+  <div class="gallery">
+    <div class="gif-container">
+      <img src="https://i.postimg.cc/N0jmp80F/as12-4x.png" alt="Mockup 1">
+    </div>
+    <div class="gif-container">
+      <img src="https://i.postimg.cc/P5P8DXVV/Forma-Subtrair-Subtrair-4x.png" alt="Mockup 2">
+    </div>
+     <div class="gif-container">
+      <img src="https://i.postimg.cc/ZqHrRgrX/Business-Card-Mockup-Subtrair-Subtrair-5x45.png" alt="Mockup 3">
+    </div>
+    <div class="gif-container">
+      <img src="https://i.postimg.cc/mkvKS2N7/bneer-4x.png" alt="Mockup 4">
+    </div>
+  </div>
+</section>
+<!-- PACOTES / CARDS DE PRODUTO -->
+<section id="pacotes">
+  <h2 class="titulo">Pacotes</h2>
+  <div style="display:flex; flex-direction:column; gap:1.25rem; max-width:860px; margin:40px auto; padding:0 20px;">
+
+    <!-- Card 1 -->
+    <div class="gif-container" style="display:flex; flex-direction:row; height:180px; cursor:pointer; border:1px solid var(--line);" onclick="openLightbox(this.querySelector('img').src)">
+      <div style="width:200px; min-width:200px; position:relative; overflow:hidden;">
+        <span style="position:absolute;top:10px;left:10px;background:var(--navy);color:#fff;font-size:10px;letter-spacing:.04em;padding:4px 10px;border-radius:2px;z-index:2;">Logo</span>
+        <img src="https://i.postimg.cc/prFGGSHP/cen25-4x.png" alt="Pacote Logo" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="flex:1; padding:1.1rem 1.4rem; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);">Identidade Visual</div>
+          <div style="font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;margin:6px 0;color:var(--ink);">Pacote Logotipo</div>
+          <div style="font-size:13px;color:var(--ink-soft);">Logotipo profissional com variações, paleta de cores e entrega em todos os formatos.</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:1.2rem;font-weight:600;color:var(--ink);">R$ 250</span>
+          <a href="https://wa.me/5511961053967" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" style="background:var(--navy);color:white;border-radius:2px;padding:8px 18px;font-size:13px;text-decoration:none;">Solicitar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repita o bloco acima para os outros pacotes -->
+
+  </div>
+</section>
+
+
+
+<div style="background:var(--navy-deep); display:flex; flex-direction:column; align-items:center; padding:40px 0 60px;">
+  <div class="gallery__header" style="width:100%; max-width:1360px; padding-left:60px; padding-right:60px;">Monogramas de A a Z</div>
+  <div class="gallery" id="gallery" style="margin:0 auto; background:transparent; border:none; max-width:1360px;"></div>
+</div>
+
+<script>
+const links = [
+  { letter: "A", url: "https://i.postimg.cc/fyQG9L8d/A-4x.png" },
+  { letter: "B", url: "https://i.postimg.cc/httHxN12/B-4x.png" },
+  { letter: "C", url: "https://i.postimg.cc/XvZm1FhZ/C-4x.png" },
+  { letter: "D", url: "https://i.postimg.cc/6QDSkqJn/D-4x.png" },
+  { letter: "E", url: "https://i.postimg.cc/vTyKmKmr/E-4x.png" },
+  { letter: "F", url: "https://i.postimg.cc/15Jd9J1w/F-4x.png" },
+  { letter: "G", url: "https://i.postimg.cc/nLQSGxjL/G-4x.png" },
+  { letter: "H", url: "https://i.postimg.cc/vTGPy6PP/H-4x.png" },
+  { letter: "I", url: "https://i.postimg.cc/C5JcxLtX/I-4x.png" },
+  { letter: "J", url: "https://i.postimg.cc/kMy1cf4H/J-4x.png" },
+  { letter: "L", url: "https://i.postimg.cc/X7H2Mq9D/L-4x.png" },
+  { letter: "M", url: "https://i.postimg.cc/qB3dCpRL/M-4x.png" },
+  { letter: "N", url: "https://i.postimg.cc/8zVkCjmw/N-4x.png" },
+  { letter: "O", url: "https://i.postimg.cc/6qfK2h0p/O-4x.png" },
+  { letter: "P", url: "https://i.postimg.cc/hjWyCYTH/P-4x.png" },
+];
+
+function photoEl(item) {
+  const div = document.createElement("div");
+  div.className = "photo";
+  div.innerHTML = `
+    <div class="photo__image"><img src="${item.url}" alt="Monograma ${item.letter}" loading="lazy"></div>
+    <div class="photo__name">${item.letter}</div>
+  `;
+  return div;
+}
+
+const cols = [[], [], [], []];
+links.forEach((item, i) => cols[i % 4].push(item));
+
+const gallery = document.getElementById("gallery");
+const classes = ["one", "two", "three", "four"];
+
+cols.forEach((col, ci) => {
+  const wrapper = document.createElement("div");
+  wrapper.className = "gallery__strip__wrapper";
+  const strip = document.createElement("div");
+  strip.className = `gallery__strip ${classes[ci]}`;
+  const doubled = [...col, ...col, ...col];
+  doubled.forEach(item => strip.appendChild(photoEl(item)));
+  wrapper.appendChild(strip);
+  gallery.appendChild(wrapper);
+});
+</script>
+<!-- GALERIA GIFS / PORTFÓLIO -->
 
 <section id="gifs">
   <div id="lapin-gifs">
@@ -1492,19 +1490,19 @@ cols.forEach((col, ci) => {
       </div>
     </div>
 
-    <main class="lapin-gifs-main">
+    <div class="lapin-gifs-main">
       <div class="lapin-gifs-grid" id="lapinGifGrid"></div>
       <p class="lapin-gifs-note">
         Clique em qualquer trabalho para ampliar. O botão inferior pode receber o link do projeto ou produto.
       </p>
-    </main>
+    </div>
 
   </div>
 </section>
 
 <div id="lapinGifModal" onclick="closeLapinGifModal(event)">
   <button id="lapinGifModalClose" aria-label="Fechar">×</button>
-  <img id="lapinGifModalImg" src="" alt="Imagem ampliada">
+  <img id="lapinGifModalImg" alt="Imagem ampliada">
 </div>
 
 <script>
@@ -1680,7 +1678,7 @@ s0.parentNode.insertBefore(s1,s0);
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox()">
   <button id="lightbox-close" onclick="closeLightbox()">×</button>
-  <img id="lightbox-img" src="" alt="">
+  <img id="lightbox-img" alt="">
 </div>
 
 
@@ -1716,10 +1714,8 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <!-- CONTADOR DE VISITAS -->
 <div style="text-align:center; margin:30px 0;">
-    <div class="powr-hit-counter" id="711f4c65_1780375528"></div>
+    <a href="https://www.freecounterstat.com" title="website counters"><img src="https://counter6.optistats.ovh/private/freecounterstat.php?c=uekkqlrcurhbcnqpjzpb3372dl922uge" border="0" title="website counters" alt="website counters"></a>
 </div>
-
-<script src="https://www.powr.io/powr.js?platform=google"></script>
   <!-- Arquivo revisado automaticamente -->
 <script>
 let slideIndex = 0;
