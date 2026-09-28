@@ -1176,6 +1176,148 @@ nav a:hover::after{
 #lapinGifModalClose:hover{
   color:#C9A64A;
 }
+
+/* =========================================================
+   GALERIA GIF — cartões 1 + 2 sobrepostos (hover: 2 sobre 1)
+   ========================================================= */
+#galeria-gif{
+  background:var(--ink);
+  padding:80px 60px 100px;
+}
+.gg-header{
+  max-width:1360px;
+  margin:0 auto 46px;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  padding-bottom:22px;
+}
+.gg-eyebrow{
+  margin:0 0 7px;
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#C9A64A;
+}
+.gg-title{
+  margin:0;
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:40px;
+  color:#fff;
+}
+.gg-grid{
+  max-width:1360px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:44px 34px;
+}
+.gg-item{
+  position:relative;
+  width:100%;
+  aspect-ratio:827/1201;
+  outline:none;
+}
+.gg-card,.gg-text{
+  position:absolute;
+  overflow:hidden;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1),opacity .4s ease,box-shadow .4s ease;
+}
+.gg-card{
+  background:#dcdcdc;
+  cursor:zoom-in;
+  width:66.7%;
+  height:75.8%;
+}
+.gg-card img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.gg-num{
+  position:absolute;
+  top:5%;left:9%;
+  font-family:'Fraunces',serif;
+  font-size:clamp(14px,1.6vw,22px);
+  color:#fff;
+  mix-blend-mode:difference;
+  pointer-events:none;
+  z-index:2;
+}
+/* cartão 1 (frente) */
+.gg-c1{left:0;top:0;background:#efefef;z-index:2;box-shadow:6px 6px 22px rgba(0,0,0,.45)}
+/* cartão 2 (atrás, deslocado) */
+.gg-c2{left:33.3%;top:9.2%;z-index:1}
+.gg-t{
+  height:11.7%;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 5%;
+  font-family:'Inter',sans-serif;
+  color:#666;
+  background:#efefef;
+  border:1px solid #b9b9b9;
+}
+.gg-t2{background:#dcdcdc;border-color:#dcdcdc}
+.gg-t1{left:0;top:81.9%;width:66%;z-index:3}
+.gg-t2{left:33.6%;top:91.4%;width:66.4%;height:8.6%;z-index:1}
+.gg-t b{
+  font-weight:500;
+  font-size:clamp(11px,1.15vw,16px);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.gg-t small{
+  font-size:clamp(9px,.8vw,11px);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#8a8a8a;
+  margin-top:3px;
+}
+.gg-t a{color:inherit;text-decoration:none}
+.gg-t a:hover{color:var(--brass)}
+
+/* estado ativo: o 2 aparece sobre o 1 */
+.gg-item.is-active .gg-c2,
+.gg-item:focus-visible .gg-c2{
+  transform:translate(-50%,-12.1%);
+  z-index:4;
+  box-shadow:6px 6px 26px rgba(0,0,0,.55);
+}
+.gg-item.is-active .gg-c1,
+.gg-item:focus-visible .gg-c1{opacity:.55}
+.gg-item.is-active .gg-t1,
+.gg-item:focus-visible .gg-t1{opacity:.45}
+.gg-item.is-active .gg-t2,
+.gg-item:focus-visible .gg-t2{
+  transform:translate(-50.2%,-110%);
+  z-index:4;
+  background:#efefef;
+}
+@media(hover:hover){
+  .gg-item:hover .gg-c2{
+    transform:translate(-50%,-12.1%);
+    z-index:4;
+    box-shadow:6px 6px 26px rgba(0,0,0,.55);
+  }
+  .gg-item:hover .gg-c1{opacity:.55}
+  .gg-item:hover .gg-t1{opacity:.45}
+  .gg-item:hover .gg-t2{
+    transform:translate(-50.2%,-110%);
+    z-index:4;
+    background:#efefef;
+  }
+}
+@media(max-width:1100px){
+  .gg-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  #galeria-gif{padding:55px 16px 70px}
+  .gg-title{font-size:30px}
+  .gg-grid{gap:40px 18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .gg-card,.gg-text{transition:none}
+}
 </style>
 </head>
 
@@ -1189,6 +1331,7 @@ nav a:hover::after{
     <a href="#mockups">Mockups</a>
     <a href="#pacotes">Pacotes</a>
     <a href="#gifs">Portfólio</a>
+    <a href="#galeria-gif">Galeria GIF</a>
     <a href="#contatos">Contato</a>
   </div>
 </nav>
@@ -1645,6 +1788,72 @@ renderLapinGifGallery();
 </script>
 
 <!-- CONTATOS -->
+
+<!-- GALERIA GIF (cartão 1 + cartão 2 sobreposto) -->
+<section id="galeria-gif">
+  <div class="gg-header">
+    <p class="gg-eyebrow">Passe o mouse · o 2 aparece sobre o 1</p>
+    <h2 class="gg-title">Galeria GIF</h2>
+  </div>
+  <div class="gg-grid" id="ggGrid"></div>
+</section>
+
+<script>
+/* =========================================================
+   EDITE SOMENTE ESTA LISTA PARA TROCAR OS GIFS E TEXTOS
+   img1 / img2  = imagem ou GIF do cartão 1 e do cartão 2
+   txt1 / txt2  = texto abaixo de cada cartão
+   sub1 / sub2  = linha pequena (opcional)
+   link         = página do projeto (opcional)
+   ========================================================= */
+const ggItems = [
+  { img1:'https://i.postimg.cc/5twfXjr8/T1-4x.png',  txt1:'Projeto 01', sub1:'Frente',
+    img2:'https://i.postimg.cc/RFd9Ty4S/T2-4x.png',  txt2:'Projeto 01', sub2:'Detalhe', link:'#mockups' },
+  { img1:'https://i.postimg.cc/02n7zTmq/vaka-leiti-mockup-Intersectar-4x.png', txt1:'Vaka Leiti', sub1:'Frente',
+    img2:'https://i.postimg.cc/vT968js7/aguard-4x-Intersectar-4x.png',         txt2:'Aguard',     sub2:'Detalhe', link:'#mockups' },
+  { img1:'https://i.postimg.cc/wMBz42jc/T3-4x.png',  txt1:'Projeto 03', sub1:'Frente',
+    img2:'https://i.postimg.cc/d3SYbC7Y/T5-4x.png',  txt2:'Projeto 03', sub2:'Detalhe', link:'#mockups' },
+  { img1:'https://i.postimg.cc/SscMk3q8/hb-4x-4x.png', txt1:'HB', sub1:'Frente',
+    img2:'https://i.postimg.cc/N0jmp80F/as12-4x.png',   txt2:'HB', sub2:'Detalhe', link:'#mockups' }
+];
+
+(function(){
+  const grid = document.getElementById('ggGrid');
+  const esc = v => { const d=document.createElement('div'); d.textContent=v||''; return d.innerHTML; };
+  const touch = window.matchMedia('(hover:none)');
+
+  ggItems.forEach((it,i)=>{
+    const el = document.createElement('article');
+    el.className = 'gg-item';
+    el.tabIndex = 0;
+    el.setAttribute('aria-label','Galeria '+(i+1)+': '+it.txt1);
+    const lk = it.link || '#';
+    const ext = !lk.startsWith('#') ? ' target="_blank" rel="noopener noreferrer"' : '';
+    el.innerHTML =
+      '<div class="gg-card gg-c2" data-src="'+esc(it.img2)+'"><span class="gg-num">2</span>'+
+        '<img loading="lazy" src="'+esc(it.img2)+'" alt="'+esc(it.txt2)+'"></div>'+
+      '<div class="gg-card gg-c1" data-src="'+esc(it.img1)+'"><span class="gg-num">1</span>'+
+        '<img loading="lazy" src="'+esc(it.img1)+'" alt="'+esc(it.txt1)+'"></div>'+
+      '<div class="gg-text gg-t gg-t2"><b>'+esc(it.txt2)+'</b><small>'+esc(it.sub2)+'</small></div>'+
+      '<div class="gg-text gg-t gg-t1"><b><a href="'+esc(lk)+'"'+ext+'>'+esc(it.txt1)+'</a></b><small>'+esc(it.sub1)+'</small></div>';
+
+    el.querySelectorAll('.gg-card').forEach(card=>{
+      card.addEventListener('click',()=>{
+        if(touch.matches && !el.classList.contains('is-active')){
+          grid.querySelectorAll('.is-active').forEach(o=>o.classList.remove('is-active'));
+          el.classList.add('is-active');
+          return;
+        }
+        if(typeof openLapinGifModal==='function'){
+          openLapinGifModal(card.dataset.src, it.txt1);
+        }
+      });
+    });
+    grid.appendChild(el);
+  });
+})();
+</script>
+
 <section id="contatos">
   <h2 class="titulo">Contatos</h2>
   <div class="contatos-wrapper">
